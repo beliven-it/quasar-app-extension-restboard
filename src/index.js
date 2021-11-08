@@ -7,6 +7,9 @@
  */
 
 function extendConf (conf) {
+  conf.boot.push('i18n')
+  conf.boot.push('rb')
+
   // make sure boot & component files get transpiled
   conf.build.transpileDependencies.push(/quasar-app-extension-restboard[\\/]src/)
 }
