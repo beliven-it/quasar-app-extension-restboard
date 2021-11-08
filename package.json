@@ -1,0 +1,22 @@
+{
+  "name": "quasar-app-extension-restboard",
+  "version": "0.0.1",
+  "description": "A starter kit to install Restboard in a fresh new Quasar project",
+  "author": "Emanuele Bertoldi <emanuele.bertoldi@gmail.com>",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/restboard/quasar-app-extension-restboard"
+  },
+  "bugs": "https://github.com/restboard/quasar-app-extension-restboard/issues",
+  "homepage": "https://github.com/restboard/quasar-app-extension-restboard",
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  }
+}
