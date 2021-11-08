@@ -20,7 +20,7 @@ module.exports = function (api) {
     },
 
     devDependencies: {
-      "quasar-app-extension-rb-ui": "0.0.1"
+      "quasar-app-extension-rb-ui": "^0.2.0"
     }
   })
 }
