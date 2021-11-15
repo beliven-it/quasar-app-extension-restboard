@@ -40,5 +40,11 @@
  */
 
 module.exports = function () {
-  return []
+  return [
+    {
+      name: 'examples',
+      type: 'confirm',
+      message: 'Include example resources and providers'
+    }
+  ]
 }
