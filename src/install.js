@@ -28,7 +28,7 @@ function installExamplesModule (api) {
 
   api.extendJsonFile('package.json', {
     dependencies: {
-      'rb-auth-provider-simple': '^0.8.1',
+      'rb-auth-provider-simple': '^0.10.0',
       'rb-data-provider-json-server': '^0.16.0'
     }
   })
