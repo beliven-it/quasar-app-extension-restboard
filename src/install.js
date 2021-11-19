@@ -10,8 +10,8 @@ function installCoreModule (api) {
 
   api.extendJsonFile('package.json', {
     dependencies: {
-      'rb-core-module': '^0.14.0',
-      'rb-vue': '^0.5.0',
+      'rb-core-module': '^0.15.0',
+      'rb-vue': '^0.6.0',
       'rb-vue-smart-components': '^0.0.7',
       'vue-i18n': '^9.0.0',
       vuex: '^4.0.1'
@@ -28,8 +28,8 @@ function installExamplesModule (api) {
 
   api.extendJsonFile('package.json', {
     dependencies: {
-      'rb-auth-provider-simple': '^0.10.0',
-      'rb-data-provider-json-server': '^0.16.0'
+      'rb-auth-provider-simple': '^0.11.0',
+      'rb-data-provider-json-server': '^0.18.0'
     }
   })
 }
