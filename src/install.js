@@ -18,7 +18,7 @@ function installCoreModule (api) {
     },
 
     devDependencies: {
-      'quasar-app-extension-rb-ui': '^0.3.1'
+      'quasar-app-extension-rb-ui': '^0.4.0'
     }
   })
 }

@@ -31,6 +31,18 @@ export async function logout ({ commit }) {
   }
 }
 
+export async function recoverPassword ({ commit }, email) {
+  commit('setLastError', null)
+  commit('setLoading', true)
+  try {
+    // TODO...
+    commit('setLoading', false)
+  } catch (err) {
+    commit('setLastError', err.message)
+    commit('setLoading', false)
+  }
+}
+
 export async function checkRoutePermissions (
   { commit, dispatch, state },
   route
