@@ -10,7 +10,9 @@ function installCoreModule (api) {
 
   api.extendJsonFile('package.json', {
     dependencies: {
+      'rb-auth-provider-simple': '^0.11.0',
       'rb-core-module': '^0.15.0',
+      'rb-data-provider-json-server': '^0.18.0',
       'rb-vue': '^0.6.0',
       'rb-vue-smart-components': '^0.0.7',
       'vue-i18n': '^9.0.0',
@@ -25,13 +27,6 @@ function installCoreModule (api) {
 
 function installExamplesModule (api) {
   api.render('./templates/examples')
-
-  api.extendJsonFile('package.json', {
-    dependencies: {
-      'rb-auth-provider-simple': '^0.11.0',
-      'rb-data-provider-json-server': '^0.18.0'
-    }
-  })
 }
 
 module.exports = function (api) {
