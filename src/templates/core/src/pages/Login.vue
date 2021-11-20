@@ -18,7 +18,7 @@ export default defineComponent({
     },
 
     onForgotPassword () {
-      this.$router.push('auth/recover')
+      this.$router.push('/auth/recovery')
     }
   }
 })

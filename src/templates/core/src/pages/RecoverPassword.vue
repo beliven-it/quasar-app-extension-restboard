@@ -9,8 +9,9 @@ export default defineComponent({
   name: 'PageRecoverPassword',
 
   methods: {
-    onRecoverPassword (email) {
+    async onRecoverPassword (email) {
       await this.$store.dispatch('core/recoverPassword', email)
+      this.$router.push('/auth/login')
     }
   }
 })
