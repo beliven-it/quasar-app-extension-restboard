@@ -10,16 +10,16 @@ function installCoreModule (api) {
 
   api.extendJsonFile('package.json', {
     dependencies: {
-      'rb-auth-provider-simple': '^0.11.0',
-      'rb-core-module': '^0.15.0',
-      'rb-data-provider-json-server': '^0.18.0',
-      'rb-vue': '^0.6.0',
+      'rb-auth-provider-simple': '^0.11.1',
+      'rb-core-module': '^0.15.1',
+      'rb-data-provider-json-server': '^0.19.1',
+      'rb-vue': '^0.7.1',
       'vue-i18n': '^9.0.0',
       vuex: '^4.0.1'
     },
 
     devDependencies: {
-      'quasar-app-extension-rb-ui': '^0.6.0'
+      'quasar-app-extension-rb-ui': '^0.6.1'
     }
   })
 }
