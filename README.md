@@ -1,6 +1,6 @@
 # quasar-app-extension-restboard
 
-A starter kit to install [Restboard](restboard.github.io) in a fresh new [Quasar Framework](https://donate.quasar.dev) project
+A starter kit to install [Restboard](https://restboard.github.io/) in a fresh new [Quasar Framework](https://donate.quasar.dev) project
 
 ## Install
 
