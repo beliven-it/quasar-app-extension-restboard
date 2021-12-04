@@ -4,12 +4,16 @@
  * Docs: https://quasar.dev/app-extensions/development-guide/install-api
  * API: https://github.com/quasarframework/quasar/blob/master/app/lib/app-extension/InstallAPI.js
  */
+const path = require('path')
 const fs = require('fs')
 
 function installCoreModule (api) {
   api.render('./templates/core')
 
-  restboardPackageJson = JSON.parse(fs.readFileSync('../package.json'))
+  restboardPackageJsonFilename = path.join(__dirname, '../package.json')
+  restboardPackageJson = JSON.parse(
+    fs.readFileSync(restboardPackageJsonFilename)
+  )
 
   api.extendPackageJson({
     dependencies: restboardPackageJson.dependencies,
