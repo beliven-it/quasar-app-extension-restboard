@@ -4,23 +4,25 @@
  * Docs: https://quasar.dev/app-extensions/development-guide/install-api
  * API: https://github.com/quasarframework/quasar/blob/master/app/lib/app-extension/InstallAPI.js
  */
+const fs = require('fs')
 
 function installCoreModule (api) {
   api.render('./templates/core')
 
-  api.extendJsonFile('package.json', {
-    dependencies: {
-      'rb-auth-provider-simple': '^0.11.1',
-      'rb-core-module': '^0.15.1',
-      'rb-data-provider-json-server': '^0.19.1',
-      'rb-vue': '^0.7.1',
-      'vue-i18n': '^9.0.0',
-      vuex: '^4.0.1'
-    },
+  restboardPackageJson = JSON.parse(fs.readFileSync('../package.json'))
 
-    devDependencies: {
-      'quasar-app-extension-rb-ui': '^0.6.3'
-    }
+  api.extendPackageJson({
+    dependencies: restboardPackageJson.dependencies,
+    devDependencies: restboardPackageJson.devDependencies
+  })
+
+  const extensionsFilename = api.resolve.app('quasar.extensions.json')
+  if (!fs.existsSync(extensionsFilename)) {
+    fs.writeFile(extensionsFilename, '{}')
+  }
+
+  api.extendJsonFile('quasar.extensions.json', {
+    'rb-ui': {}
   })
 }
 
