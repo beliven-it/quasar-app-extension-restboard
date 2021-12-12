@@ -1,8 +1,8 @@
 import { defineAsyncComponent } from 'vue'
-import { createVueResource } from 'rb-vue'
+import { createResource } from 'rb-core-module'
 import { dataProvider } from '../providers'
 
-export default createVueResource({
+export default createResource({
   name: 'users',
   provider: dataProvider,
   schema: {
@@ -22,6 +22,21 @@ export default createVueResource({
   },
   ui: {
     icon: 'group',
-    formComponent: defineAsyncComponent(() => import('components/UserForm.vue'))
+    formComponent: defineAsyncComponent(() =>
+      import('components/UserForm.vue')
+    ),
+    columns: [
+      {
+        name: 'id'
+      },
+      {
+        name: 'name',
+        filterable: true
+      },
+      {
+        name: 'email',
+        filterable: true
+      }
+    ]
   }
 })
