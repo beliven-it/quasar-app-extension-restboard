@@ -45,7 +45,7 @@ export default route(function ({ store }) {
   // If user is not authenticated or authorized, redirect her to login page.
   Router.beforeEach(async (to, from, next) => {
     const routingDescr = `Routing from ${from.path} to ${to.path}...`
-    if (WHITELIST_URLS.indexOf(to.path) === 0) {
+    if (WHITELIST_URLS.indexOf(to.path) !== -1) {
       console.debug(`[ALLOW] ${routingDescr}`)
       return next()
     }
