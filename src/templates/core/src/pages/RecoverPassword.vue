@@ -1,5 +1,8 @@
 <template>
-  <rb-recover-password-page @recover-password="onRecoverPassword" />
+  <rb-recover-password-page
+    @cancel="onCancel"
+    @recover-password="onRecoverPassword"
+  />
 </template>
 
 <script>
@@ -9,6 +12,10 @@ export default defineComponent({
   name: 'PageRecoverPassword',
 
   methods: {
+    onCancel () {
+      this.$router.push('/auth/login')
+    },
+
     async onRecoverPassword (email) {
       await this.$store.dispatch('core/recoverPassword', email)
       this.$router.push('/auth/login')
