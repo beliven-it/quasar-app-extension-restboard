@@ -55,7 +55,7 @@ export default route(function ({ store }) {
         console.debug(`[ALLOW] ${routingDescr}`)
         return next()
       } else {
-        throw new Error('Unauthorized access')
+        throw new Error(`Unauthorized access to ${to.path}`)
       }
     } catch (err) {
       console.debug(`[BLOCK] ${routingDescr}`)
