@@ -23,7 +23,7 @@
     "quasar-app-extension-rb-ui": "^0.11.0"
   },
   "dependencies": {
-    "rb-auth-provider-simple": "^0.14.0",
+    "rb-auth-provider-simple": "^0.14.1",
     "rb-core-module": "^0.24.0",
     "rb-data-provider-json-server": "^0.22.0",
     "vue-i18n": "^9.0.0",
