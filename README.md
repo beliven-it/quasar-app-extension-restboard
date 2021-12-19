@@ -51,19 +51,16 @@ your Quasar project with the following content:
 
 ```js
 // src/boot/rb.js
-import { createResourceManager } from 'rb-core-module'
 import resources from '../resources'
 
 export default ({ app }) => {
   function install (Vue) {
-    const rb = createResourceManager(Object.values(resources))
-
     if ('config' in Vue && Vue.config.globalProperties) {
       // Vue 3.x
-      Vue.config.globalProperties.$rb = rb
+      Vue.config.globalProperties.$rb = resources
     } else {
       // Vue 2.x
-      Vue.prototype.$rb = rb
+      Vue.prototype.$rb = resources
     }
   }
 
