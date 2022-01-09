@@ -20,7 +20,7 @@
     "yarn": ">= 1.6.0"
   },
   "devDependencies": {
-    "quasar-app-extension-rb-ui": "^0.13.0"
+    "quasar-app-extension-rb-ui": "^0.14.0"
   },
   "dependencies": {
     "rb-auth-provider-simple": "^0.15.0",
