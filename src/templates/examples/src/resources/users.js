@@ -5,6 +5,7 @@ import { dataProvider } from '../providers'
 export default createResource({
   name: 'users',
   provider: dataProvider,
+  displayAttr: 'name',
   schema: {
     type: 'object',
     properties: {
