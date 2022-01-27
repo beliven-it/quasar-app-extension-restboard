@@ -26,13 +26,17 @@ function createRoutes (store) {
           component: () => import('pages/Index.vue')
         },
         // Add default routes for each registered resource
-        ...Object.keys(resources).map(resourceName => ({
-          path: resourceName,
-          component: () => import('pages/MasterDetail.vue'),
-          props: {
-            resource: resources[resourceName]
+        ...Object.values(resources).map(resource => {
+          return {
+            path: resource.name,
+            component: resource.ui.indexComponent
+              ? resource.ui.indexComponent
+              : () => import('pages/MasterDetail.vue'),
+            props: {
+              resource
+            }
           }
-        }))
+        })
       ]
     },
 
