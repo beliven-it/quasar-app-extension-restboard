@@ -13,16 +13,29 @@ export default createResource({
         type: 'number'
       },
       name: {
-        type: 'string',
-        filterable: true
+        type: 'string'
       },
       email: {
         type: 'string'
       }
     }
   },
+  // actions: {
+  //   edit: {
+  //     icon: 'edit',
+  //     async run (item) {
+  //       // ...
+  //     }
+  //   }
+  // },
   ui: {
     icon: 'group',
+    // indexComponent: defineAsyncComponent(() =>
+    //   import('components/ResourceTable.vue')
+    // ),
+    // cardComponent: defineAsyncComponent(() =>
+    //   import('components/ResourceCard.vue')
+    // ),
     formComponent: defineAsyncComponent(() =>
       import('components/UserForm.vue')
     ),
