@@ -1,6 +1,6 @@
 {
   "name": "quasar-app-extension-restboard",
-  "version": "0.19.1",
+  "version": "0.20.0",
   "description": "A starter kit to install Restboard in a fresh new Quasar project",
   "author": "Emanuele Bertoldi <emanuele.bertoldi@gmail.com>",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "yarn": ">= 1.6.0"
   },
   "devDependencies": {
-    "quasar-app-extension-rb-ui": "^0.19.0"
+    "quasar-app-extension-rb-ui": "^0.21.0"
   },
   "dependencies": {
     "rb-auth-provider-simple": "^0.15.0",
