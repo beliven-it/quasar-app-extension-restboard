@@ -33,7 +33,8 @@ function createRoutes (store) {
               ? resource.ui.indexComponent
               : () => import('pages/MasterDetail.vue'),
             props: {
-              resource
+              resource,
+              padding: true
             }
           }
         })
