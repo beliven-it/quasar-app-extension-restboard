@@ -9,17 +9,16 @@
         :limit="limit"
       >
         <template #default="props">
-          <rb-data-table
+          <rb-pivot-data-table
             class="full-width"
             :title="props.resource.label"
-            :columns="props.resource.ui.columns"
-            :row-key="props.resource.key"
-            :rows="props.items"
-            :actions="props.resource.actions"
-            :selection="selection"
-            :selected="selectedRows"
+            :model-value="props.items"
             :pagination="props.pagination"
-            @update:selected="onUpdateSelected"
+            :column-key="columnKey"
+            :row-key="rowKey"
+            :cell-key="cellKey"
+            :with-column-total="withColumnTotal"
+            :with-row-total="withRowTotal"
           />
         </template>
 
@@ -35,7 +34,7 @@
 import { defineComponent } from "vue"
 
 export default defineComponent({
-  name: "PageResourceTable",
+  name: "PagePivotTable",
 
   props: {
     resource: {
@@ -63,32 +62,25 @@ export default defineComponent({
       type: Boolean
     },
 
-    selection: {
+    rowKey: {
       type: String
     },
 
-    selected: {
-      type: Array
-    }
-  },
+    columnKey: {
+      type: String
+    },
 
-  data () {
-    return {
-      selectedRows: [...(this.selected || [])]
-    }
-  },
+    cellKey: {
+      type: String
+    },
 
-  methods: {
-    onUpdateSelected (evt) {
-      this.selectedRows = evt
-    }
-  },
+    withRowTotal: {
+      type: Boolean
+    },
 
-  watch: {
-    selected (val) {
-      this.selectedRows = [...(val || [])]
+    withColumnTotal: {
+      type: Boolean
     }
   }
 })
 </script>
-

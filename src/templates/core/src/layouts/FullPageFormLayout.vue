@@ -1,5 +1,11 @@
 <template>
-  <rb-full-page-form-layout />
+  <q-layout class="bg-grey-2">
+    <q-page-container>
+      <div class="flex flex-center">
+        <router-view />
+      </div>
+    </q-page-container>
+  </q-layout>
 </template>
 
 <script>
