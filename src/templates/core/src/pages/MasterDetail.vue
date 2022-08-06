@@ -16,19 +16,25 @@
           :offset="offset"
           :limit="limit"
         >
-          <rb-data-table
-            :loading="props.loading"
-            :title="props.resource.label"
-            :columns="props.resource.ui.columns"
-            :row-key="props.resource.key"
-            :rows="props.items"
-            :actions="props.resource.actions"
-            :selection="selection"
-            :selected="selectedRows"
-            :pagination="props.pagination"
-            @update:selected="onUpdateSelected"
-            @row-click="onRowClicked"
-          />
+          <template #default="props">
+            <rb-data-table
+              :loading="props.loading"
+              :title="props.resource.label"
+              :columns="props.resource.ui.columns"
+              :row-key="props.resource.key"
+              :rows="props.items"
+              :actions="props.resource.actions"
+              :selection="selection"
+              :selected="selectedRows"
+              :pagination="props.pagination"
+              @update:selected="onUpdateSelected"
+              @row-click="onRowClicked"
+            />
+          </template>
+
+          <template #empty>
+            <rb-empty-banner>{{ $t('No results') }}</rb-empty-banner>
+          </template>
         </rb-resource-collection>
       </template>
       <template v-slot:after>
