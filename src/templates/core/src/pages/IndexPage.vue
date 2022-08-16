@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex flex-center">
     <q-img
-      alt="logo.png"
+      alt="logo"
       width="128px"
       src="~assets/logo.svg"
     />
