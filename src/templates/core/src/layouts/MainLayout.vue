@@ -8,6 +8,7 @@
         :class="toolbarClass"
         :style="toolbarStyle"
         :title="title"
+        :logoSrc="logoSrc"
         :is-menu-open="leftDrawerOpen"
         @toggle-menu="onToggleLeftDrawer"
       >
@@ -53,6 +54,10 @@ export default defineComponent({
     title: {
       type: String,
       default: 'Restboard'
+    },
+    logoSrc: {
+      type: String,
+      default: '~assets/logo.svg'
     },
     toolbarClass: {
       type: [String, Object, Array]
