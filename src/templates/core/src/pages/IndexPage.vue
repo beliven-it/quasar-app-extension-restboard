@@ -1,6 +1,7 @@
 <template>
   <q-page class="flex flex-center">
     <q-img
+      alt="logo.png"
       width="128px"
       src="~assets/logo.svg"
     />
@@ -11,6 +12,6 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'PageIndex'
+  name: 'IndexPage'
 })
 </script>

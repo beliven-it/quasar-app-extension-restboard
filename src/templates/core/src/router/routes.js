@@ -23,7 +23,7 @@ function createRoutes (store) {
       children: [
         {
           path: '',
-          component: () => import('pages/Index.vue')
+          component: () => import('pages/IndexPage.vue')
         },
         // Add default routes for each registered resource
         ...Object.values(resources).map(resource => {
