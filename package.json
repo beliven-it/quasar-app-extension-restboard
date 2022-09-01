@@ -20,11 +20,11 @@
     "yarn": ">= 1.6.0"
   },
   "devDependencies": {
-    "quasar-app-extension-rb-ui": "^0.27.1"
+    "quasar-app-extension-rb-ui": "^0.28.0"
   },
   "dependencies": {
     "rb-auth-provider-simple": "^0.16.0",
-    "rb-core-module": "^0.26.0",
+    "rb-core-module": "^0.26.1",
     "rb-data-provider-json-server": "^0.25.0",
     "vue-i18n": "^9.0.0",
     "vuex": "^4.0.1"
