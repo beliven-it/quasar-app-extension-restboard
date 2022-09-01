@@ -59,3 +59,11 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped lang="sass">
+.q-card
+  min-width: 320px
+
+  @media (min-width: $breakpoint-md-min)
+    min-width: 400px
+</style>
