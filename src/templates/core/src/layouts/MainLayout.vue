@@ -8,10 +8,13 @@
         :class="toolbarClass"
         :style="toolbarStyle"
         :title="title"
-        :logoSrc="logoSrc"
         :is-menu-open="leftDrawerOpen"
         @toggle-menu="onToggleLeftDrawer"
       >
+        <template v-slot:logo>
+          <img src="~assets/logo.svg" height="40" :alt="title" />
+        </template>
+
         <rb-user-area
           :show-identity="showIdentity && $q.screen.gt.sm"
           :user-avatar="userAvatar"
@@ -54,10 +57,6 @@ export default defineComponent({
     title: {
       type: String,
       default: 'Restboard'
-    },
-    logoSrc: {
-      type: String,
-      default: '~assets/logo.svg'
     },
     toolbarClass: {
       type: [String, Object, Array]
