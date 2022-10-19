@@ -29,11 +29,22 @@
               :pagination="props.pagination"
               @update:selected="onUpdateSelected"
               @row-click="onRowClicked"
-            />
+            >
+              <template #top-actions>
+                <q-btn
+                  flat
+                  round
+                  dense
+                  icon="sync"
+                  class="text-gray-7"
+                  @click="props.clearAndReloadData()"
+                />
+              </template>
+            </rb-data-table>
           </template>
 
           <template #empty>
-            <rb-empty-banner>{{ $t('No results') }}</rb-empty-banner>
+            <rb-empty-banner>{{ $t("No results") }}</rb-empty-banner>
           </template>
         </rb-resource-collection>
       </template>
@@ -58,14 +69,8 @@
             @dismiss="onFormDismissed"
           />
         </rb-resource-instance>
-        <div
-          v-else
-          class="fit column items-center"
-        >
-          <div
-            class="column q-gutter-sm text-center"
-            style="max-width: 200px"
-          >
+        <div v-else class="fit column items-center">
+          <div class="column q-gutter-sm text-center" style="max-width: 200px">
             <p>{{ $t("Select an item from the list or") }}</p>
             <q-btn
               color="primary"
@@ -81,52 +86,52 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue"
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  name: 'PageMasterDetail',
+  name: "PageMasterDetail",
 
   props: {
     resource: {
-      type: Object
+      type: Object,
     },
 
     filters: {
-      type: Object
+      type: Object,
     },
 
     offset: {
       type: Number,
-      default: 0
+      default: 0,
     },
 
     limit: {
-      type: Number
+      type: Number,
     },
 
     keepOnEmpty: {
-      type: Boolean
+      type: Boolean,
     },
 
     selection: {
-      type: String
+      type: String,
     },
 
     selected: {
-      type: Array
+      type: Array,
     },
 
     horizontal: {
-      type: Boolean
+      type: Boolean,
     },
 
     ratio: {
       type: Number,
-      default: 60
-    }
+      default: 60,
+    },
   },
 
-  data () {
+  data() {
     return {
       activeRow: null,
       selectedRows: this.selected || undefined,
@@ -135,33 +140,32 @@ export default defineComponent({
   },
 
   methods: {
-    onUpdateSelected (evt) {
-      this.selectedRows = evt
-      this.$emit('update:selected', evt)
+    onUpdateSelected(evt) {
+      this.selectedRows = evt;
+      this.$emit("update:selected", evt);
     },
 
-    onRowClicked (evt, row) {
+    onRowClicked(evt, row) {
       this.activeRow = row;
     },
 
-    onAddNewRow () {
+    onAddNewRow() {
       this.activeRow = {};
     },
 
-    onFormSubmitted (data) {
-      this.$refs.resourceInstance.saveData(data)
+    onFormSubmitted(data) {
+      this.$refs.resourceInstance.saveData(data);
     },
 
-    onFormDismissed () {
+    onFormDismissed() {
       this.activeRow = null;
     },
   },
 
   watch: {
-    selected (val) {
-      this.selectedRows = val || undefined
-    }
-  }
-})
+    selected(val) {
+      this.selectedRows = val || undefined;
+    },
+  },
+});
 </script>
-

@@ -20,11 +20,22 @@
             :selected="selectedRows"
             :pagination="props.pagination"
             @update:selected="onUpdateSelected"
-          />
+          >
+            <template #top-actions>
+              <q-btn
+                flat
+                round
+                dense
+                icon="sync"
+                class="text-gray-7"
+                @click="props.clearAndReloadData()"
+              />
+            </template>
+          </rb-data-table>
         </template>
 
         <template #empty>
-          <rb-empty-banner>{{ $t('No results') }}</rb-empty-banner>
+          <rb-empty-banner>{{ $t("No results") }}</rb-empty-banner>
         </template>
       </rb-resource-collection>
     </rb-container>
@@ -32,63 +43,62 @@
 </template>
 
 <script>
-import { defineComponent } from "vue"
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "PageResourceTable",
 
   props: {
     resource: {
-      type: Object
+      type: Object,
     },
 
     filters: {
-      type: Object
+      type: Object,
     },
 
     offset: {
       type: Number,
-      default: 0
+      default: 0,
     },
 
     limit: {
-      type: Number
+      type: Number,
     },
 
     fullWidth: {
-      type: Boolean
+      type: Boolean,
     },
 
     keepOnEmpty: {
-      type: Boolean
+      type: Boolean,
     },
 
     selection: {
-      type: String
+      type: String,
     },
 
     selected: {
-      type: Array
-    }
+      type: Array,
+    },
   },
 
-  data () {
+  data() {
     return {
-      selectedRows: [...(this.selected || [])]
-    }
+      selectedRows: [...(this.selected || [])],
+    };
   },
 
   methods: {
-    onUpdateSelected (evt) {
-      this.selectedRows = evt
-    }
+    onUpdateSelected(evt) {
+      this.selectedRows = evt;
+    },
   },
 
   watch: {
-    selected (val) {
-      this.selectedRows = [...(val || [])]
-    }
-  }
-})
+    selected(val) {
+      this.selectedRows = [...(val || [])];
+    },
+  },
+});
 </script>
-
