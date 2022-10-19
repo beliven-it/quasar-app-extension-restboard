@@ -27,7 +27,7 @@
                 round
                 dense
                 icon="sync"
-                class="text-gray-7"
+                class="text-grey-7"
                 @click="props.clearAndReloadData()"
               />
             </template>
