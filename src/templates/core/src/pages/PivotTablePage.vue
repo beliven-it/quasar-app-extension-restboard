@@ -36,7 +36,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "PagePivotTable",
+  name: "PivotTablePage",
 
   props: {
     resource: {

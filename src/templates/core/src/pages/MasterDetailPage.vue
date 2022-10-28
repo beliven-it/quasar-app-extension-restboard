@@ -93,7 +93,7 @@
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  name: "PageMasterDetail",
+  name: "MasterDetailPage",
 
   props: {
     resource: {

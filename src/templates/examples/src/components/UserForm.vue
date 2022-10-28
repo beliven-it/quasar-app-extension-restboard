@@ -9,41 +9,41 @@
       outlined
       :model-value="modelValue.name"
       :label="$t('Name')"
-      @update:modelValue="val => onInput('name', val)"
+      @update:modelValue="(val) => onInput('name', val)"
     />
     <q-input
       outlined
       :model-value="modelValue.email"
       :label="$t('Email')"
-      @update:modelValue="val => onInput('email', val)"
+      @update:modelValue="(val) => onInput('email', val)"
     />
   </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'UserForm',
+  name: "UserForm",
 
   props: {
     modelValue: {
-      type: Object
+      type: Object,
     },
 
     loading: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
   methods: {
-    onInput (field, val) {
-      this.$emit('update:modelValue', {
+    onInput(field, val) {
+      this.$emit("update:modelValue", {
         ...this.modelValue,
-        [field]: val
-      })
-    }
-  }
-})
+        [field]: val,
+      });
+    },
+  },
+});
 </script>
