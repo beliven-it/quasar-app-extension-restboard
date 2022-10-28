@@ -87,22 +87,22 @@ export default {
 
 ## Layouts
 
-| Name                                                                                                                           | Description                                                                  |
-| ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
-| [FullPageFormLayout](https://github.com/restboard/quasar-app-extension-restboard/blob/main/docs/layouts/FullPageFormLayout.md) | A layout used to display a page with a single, full-page form                |
-| [MainLayout](https://github.com/restboard/quasar-app-extension-restboard/blob/main/docs/layouts/MainLayout.md)                 | A layout used to display a page with a header, sidebar and main content area |
+| Name                                                                                                                             | Description                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| [FullPageFormLayout](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/layouts/FullPageFormLayout.md) | A layout used to display a page with a single, full-page form                |
+| [MainLayout](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/layouts/MainLayout.md)                 | A layout used to display a page with a header, sidebar and main content area |
 
 ## Pages
 
-| Name                                                                                                                           | Description                                                                                                   |
-| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
-| [IndexPage](https://github.com/restboard/quasar-app-extension-restboard/blob/main/docs/pages/IndexPage.md)                     | A dashboard homepage                                                                                          |
-| [LoginPage](https://github.com/restboard/quasar-app-extension-restboard/blob/main/docs/pages/LoginPage.md)                     | A page displaying a login form                                                                                |
-| [MasterDetailPage](https://github.com/restboard/quasar-app-extension-restboard/blob/main/docs/pages/MasterDetailPage.md)       | A page displaying a resource collection as a table with the ability to select and show details of one of them |
-| [PivotTablePage](https://github.com/restboard/quasar-app-extension-restboard/blob/main/docs/pages/PivotTablePage.md)           | A page displaying a pivot table (also known as _cross-table_)                                                 |
-| [RecoverPasswordPage](https://github.com/restboard/quasar-app-extension-restboard/blob/main/docs/pages/RecoverPasswordPage.md) | A page displaying a password recovery form                                                                    |
-| [ResourceGridPage](https://github.com/restboard/quasar-app-extension-restboard/blob/main/docs/pages/ResourceGridPage.md)       | A page displaying a resource collection as a grid of items                                                    |
-| [ResourceTablePage](https://github.com/restboard/quasar-app-extension-restboard/blob/main/docs/pages/ResourceTablePage.md)     | A page displaying a collection as a table of items                                                            |
+| Name                                                                                                                             | Description                                                                                                   |
+| -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| [IndexPage](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/pages/IndexPage.md)                     | A dashboard homepage                                                                                          |
+| [LoginPage](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/pages/LoginPage.md)                     | A page displaying a login form                                                                                |
+| [MasterDetailPage](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/pages/MasterDetailPage.md)       | A page displaying a resource collection as a table with the ability to select and show details of one of them |
+| [PivotTablePage](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/pages/PivotTablePage.md)           | A page displaying a pivot table (also known as _cross-table_)                                                 |
+| [RecoverPasswordPage](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/pages/RecoverPasswordPage.md) | A page displaying a password recovery form                                                                    |
+| [ResourceGridPage](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/pages/ResourceGridPage.md)       | A page displaying a resource collection as a grid of items                                                    |
+| [ResourceTablePage](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/pages/ResourceTablePage.md)     | A page displaying a collection as a table of items                                                            |
 
 ## Contribute
 
