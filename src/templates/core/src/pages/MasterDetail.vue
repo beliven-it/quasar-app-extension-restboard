@@ -15,6 +15,8 @@
           :filters="filters"
           :offset="offset"
           :limit="limit"
+          @loaded="onLoadedItems"
+          @error="onError"
         >
           <template #default="props">
             <rb-data-table
@@ -55,6 +57,8 @@
           :id="activeRow[resource.key]"
           :resource="resource"
           v-slot="props"
+          @loaded="onLoadedItem"
+          @error="onError"
         >
           <rb-form-wrapper
             class="fit"
@@ -131,6 +135,8 @@ export default defineComponent({
     },
   },
 
+  emits: ["loaded-items", "loaded-item", "error"],
+
   data() {
     return {
       activeRow: null,
@@ -159,6 +165,18 @@ export default defineComponent({
 
     onFormDismissed() {
       this.activeRow = null;
+    },
+
+    onLoadedItems(items) {
+      this.$emit("loaded-items", items);
+    },
+
+    onLoadedItem(item) {
+      this.$emit("loaded-item", item);
+    },
+
+    onError(error) {
+      this.$emit("error", error);
     },
   },
 

@@ -7,6 +7,8 @@
         :filters="filters"
         :offset="offset"
         :limit="limit"
+        @loaded="onLoadedItems"
+        @error="onError"
       >
         <template #default="props">
           <rb-data-table
@@ -83,6 +85,8 @@ export default defineComponent({
     },
   },
 
+  emits: ["loaded-items", "error"],
+
   data() {
     return {
       selectedRows: [...(this.selected || [])],
@@ -92,6 +96,14 @@ export default defineComponent({
   methods: {
     onUpdateSelected(evt) {
       this.selectedRows = evt;
+    },
+
+    onLoadedItems(items) {
+      this.$emit("loaded-items", items);
+    },
+
+    onError(error) {
+      this.$emit("error", error);
     },
   },
 

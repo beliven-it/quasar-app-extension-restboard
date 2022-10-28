@@ -7,6 +7,8 @@
         :filters="filters"
         :offset="offset"
         :limit="limit"
+        @loaded="onLoadedItems"
+        @error="onError"
       >
         <template #default="props">
           <rb-data-grid
@@ -35,7 +37,7 @@
         </template>
 
         <template #empty>
-          <rb-empty-banner>{{ $t('No results') }}</rb-empty-banner>
+          <rb-empty-banner>{{ $t("No results") }}</rb-empty-banner>
         </template>
       </rb-resource-collection>
     </rb-container>
@@ -43,83 +45,95 @@
 </template>
 
 <script>
-import { defineComponent } from "vue"
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "PageResourceGrid",
 
   props: {
     resource: {
-      type: Object
+      type: Object,
     },
 
     filters: {
-      type: Object
+      type: Object,
     },
 
     offset: {
       type: Number,
-      default: 0
+      default: 0,
     },
 
     limit: {
-      type: Number
+      type: Number,
     },
 
     fullWidth: {
-      type: Boolean
+      type: Boolean,
     },
 
     keepOnEmpty: {
-      type: Boolean
+      type: Boolean,
     },
 
     xs: {
       type: Number,
-      default: 1
+      default: 1,
     },
 
     sm: {
       type: Number,
-      default: 2
+      default: 2,
     },
 
     md: {
       type: Number,
-      default: 3
+      default: 3,
     },
 
     lg: {
       type: Number,
-      default: 4
+      default: 4,
     },
 
     xl: {
       type: Number,
-      default: 4
-    }
+      default: 4,
+    },
   },
 
+  emits: ["loaded-items", "error"],
+
   computed: {
-    itemsPerRow () {
+    itemsPerRow() {
       if (this.$q.screen.xs) {
-        return this.xs
+        return this.xs;
       }
       if (this.$q.screen.sm) {
-        return this.sm
+        return this.sm;
       }
       if (this.$q.screen.md) {
-        return this.md
+        return this.md;
       }
       if (this.$q.screen.lg) {
-        return this.lg
+        return this.lg;
       }
-      return this.xl
+      return this.xl;
     },
 
-    cardComponent () {
-      return this.resource.ui.cardComponent || 'rb-resource-card'
-    }
-  }
-})
+    cardComponent() {
+      return this.resource.ui.cardComponent || "rb-resource-card";
+    },
+  },
+
+  methods: {
+    onLoadedItems(items) {
+      this.$emit("loaded-items", items);
+    },
+
+    onError(error) {
+      this.$emit("error", error);
+    },
+  },
+});
 </script>

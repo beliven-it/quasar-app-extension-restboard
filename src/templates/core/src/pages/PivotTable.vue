@@ -7,6 +7,8 @@
         :filters="filters"
         :offset="offset"
         :limit="limit"
+        @loaded="onLoadedItems"
+        @error="onError"
       >
         <template #default="props">
           <rb-pivot-data-table
@@ -23,7 +25,7 @@
         </template>
 
         <template #empty>
-          <rb-empty-banner>{{ $t('No results') }}</rb-empty-banner>
+          <rb-empty-banner>{{ $t("No results") }}</rb-empty-banner>
         </template>
       </rb-resource-collection>
     </rb-container>
@@ -31,56 +33,68 @@
 </template>
 
 <script>
-import { defineComponent } from "vue"
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "PagePivotTable",
 
   props: {
     resource: {
-      type: Object
+      type: Object,
     },
 
     filters: {
-      type: Object
+      type: Object,
     },
 
     offset: {
       type: Number,
-      default: 0
+      default: 0,
     },
 
     limit: {
-      type: Number
+      type: Number,
     },
 
     fullWidth: {
-      type: Boolean
+      type: Boolean,
     },
 
     keepOnEmpty: {
-      type: Boolean
+      type: Boolean,
     },
 
     rowKey: {
-      type: String
+      type: String,
     },
 
     columnKey: {
-      type: String
+      type: String,
     },
 
     cellKey: {
-      type: String
+      type: String,
     },
 
     withRowTotal: {
-      type: Boolean
+      type: Boolean,
     },
 
     withColumnTotal: {
-      type: Boolean
-    }
-  }
-})
+      type: Boolean,
+    },
+  },
+
+  emits: ["loaded-items", "error"],
+
+  methods: {
+    onLoadedItems(items) {
+      this.$emit("loaded-items", items);
+    },
+
+    onError(error) {
+      this.$emit("error", error);
+    },
+  },
+});
 </script>
