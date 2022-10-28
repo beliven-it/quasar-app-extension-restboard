@@ -6,6 +6,7 @@
   "license": "MIT",
   "main": "src/index.js",
   "scripts": {
+    "docs:gen": "npx vuelentino -i src/templates/core/**/*.vue  -o docs/components",
     "test": "echo \"No test specified\" && exit 0"
   },
   "repository": {
@@ -20,7 +21,8 @@
     "yarn": ">= 1.6.0"
   },
   "devDependencies": {
-    "quasar-app-extension-rb-ui": "^0.32.0"
+    "quasar-app-extension-rb-ui": "^0.32.0",
+    "vuelentino": "^0.0.4"
   },
   "dependencies": {
     "rb-auth-provider-simple": "^0.16.0",
