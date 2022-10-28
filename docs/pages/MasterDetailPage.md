@@ -1,4 +1,4 @@
-# PageResourceGrid
+# MasterDetailPage
 
 > 
 
@@ -10,13 +10,11 @@
 | `filters` | `object` |  | `` |
 | `offset` | `number` |  | `0` |
 | `limit` | `number` |  | `` |
-| `fullWidth` | `boolean` |  | `` |
 | `keepOnEmpty` | `boolean` |  | `` |
-| `xs` | `number` |  | `1` |
-| `sm` | `number` |  | `2` |
-| `md` | `number` |  | `3` |
-| `lg` | `number` |  | `4` |
-| `xl` | `number` |  | `4` |
+| `selection` | `string` |  | `` |
+| `selected` | `array` |  | `` |
+| `horizontal` | `boolean` |  | `` |
+| `ratio` | `number` |  | `60` |
 
 ## Slots
 
@@ -28,7 +26,9 @@
 | Name       |
 |------------|
 | `loaded-items` |
+| `loaded-item` |
 | `error` |
+| `update:selected` |
 
 ## Methods
 

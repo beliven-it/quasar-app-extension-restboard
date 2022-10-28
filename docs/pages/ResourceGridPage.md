@@ -1,4 +1,4 @@
-# PageMasterDetail
+# ResourceGridPage
 
 > 
 
@@ -10,11 +10,13 @@
 | `filters` | `object` |  | `` |
 | `offset` | `number` |  | `0` |
 | `limit` | `number` |  | `` |
+| `fullWidth` | `boolean` |  | `` |
 | `keepOnEmpty` | `boolean` |  | `` |
-| `selection` | `string` |  | `` |
-| `selected` | `array` |  | `` |
-| `horizontal` | `boolean` |  | `` |
-| `ratio` | `number` |  | `60` |
+| `xs` | `number` |  | `1` |
+| `sm` | `number` |  | `2` |
+| `md` | `number` |  | `3` |
+| `lg` | `number` |  | `4` |
+| `xl` | `number` |  | `4` |
 
 ## Slots
 
@@ -26,9 +28,7 @@
 | Name       |
 |------------|
 | `loaded-items` |
-| `loaded-item` |
 | `error` |
-| `update:selected` |
 
 ## Methods
 

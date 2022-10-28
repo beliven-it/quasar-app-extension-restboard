@@ -6,7 +6,9 @@
   "license": "MIT",
   "main": "src/index.js",
   "scripts": {
-    "docs:gen": "npx vuelentino -i src/templates/core/**/*.vue  -o docs/components",
+    "docs:gen:layouts": "npx vuelentino -i src/templates/core/src/layouts/**/*.vue  -o docs/layouts",
+    "docs:gen:pages": "npx vuelentino -i src/templates/core/src/pages/**/*.vue  -o docs/pages",
+    "docs:gen": "npm run docs:gen:layouts && npm run docs:gen:pages",
     "test": "echo \"No test specified\" && exit 0"
   },
   "repository": {

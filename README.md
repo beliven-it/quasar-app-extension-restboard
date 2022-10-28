@@ -22,12 +22,12 @@ This extension installs and wires all Restboard dependencies and provides
 a clean and working application built on top of default [Quasar Framework](https://quasar.dev)
 starter kit:
 
-| Package | Description |
-|---------|-------------|
-| `rb-core-module` | The Restboard core module. It provides base classes and interfaces for resource definition and management |
-| `rb-data-provider-json-server` | A reference data provider to interact with a JSON-based REST API |
-| `rb-auth-provider-simple` | A simple reference auth provider to include basic authentication & authorization management |
-| `quasar-app-extension-rb-ui` | The Restboard UI kit. It provides handy components to cover common use cases when creating admin panels and dashboards. |
+| Package                        | Description                                                                                                             |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| `rb-core-module`               | The Restboard core module. It provides base classes and interfaces for resource definition and management               |
+| `rb-data-provider-json-server` | A reference data provider to interact with a JSON-based REST API                                                        |
+| `rb-auth-provider-simple`      | A simple reference auth provider to include basic authentication & authorization management                             |
+| `quasar-app-extension-rb-ui`   | The Restboard UI kit. It provides handy components to cover common use cases when creating admin panels and dashboards. |
 
 While this is the best way to include automatically all the features of
 Restboard in your project, you can also decide to manually install just
@@ -51,21 +51,21 @@ your Quasar project with the following content:
 
 ```js
 // src/boot/rb.js
-import resources from '../resources'
+import resources from "../resources";
 
 export default ({ app }) => {
-  function install (Vue) {
-    if ('config' in Vue && Vue.config.globalProperties) {
+  function install(Vue) {
+    if ("config" in Vue && Vue.config.globalProperties) {
       // Vue 3.x
-      Vue.config.globalProperties.$rb = resources
+      Vue.config.globalProperties.$rb = resources;
     } else {
       // Vue 2.x
-      Vue.prototype.$rb = resources
+      Vue.prototype.$rb = resources;
     }
   }
 
-  app.use(install)
-}
+  app.use(install);
+};
 ```
 
 Now, you can create a `src/resources.js` file when you can define all
@@ -84,6 +84,25 @@ export default {
   // other resources...
 }
 ```
+
+## Layouts
+
+| Name                                                                                                                           | Description                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| [FullPageFormLayout](https://github.com/restboard/quasar-app-extension-restboard/blob/main/docs/layouts/FullPageFormLayout.md) | A layout used to display a page with a single, full-page form                |
+| [MainLayout](https://github.com/restboard/quasar-app-extension-restboard/blob/main/docs/layouts/MainLayout.md)                 | A layout used to display a page with a header, sidebar and main content area |
+
+## Pages
+
+| Name                                                                                                                           | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| [IndexPage](https://github.com/restboard/quasar-app-extension-restboard/blob/main/docs/pages/IndexPage.md)                     | A dashboard homepage                                                                                          |
+| [LoginPage](https://github.com/restboard/quasar-app-extension-restboard/blob/main/docs/pages/LoginPage.md)                     | A page displaying a login form                                                                                |
+| [MasterDetailPage](https://github.com/restboard/quasar-app-extension-restboard/blob/main/docs/pages/MasterDetailPage.md)       | A page displaying a resource collection as a table with the ability to select and show details of one of them |
+| [PivotTablePage](https://github.com/restboard/quasar-app-extension-restboard/blob/main/docs/pages/PivotTablePage.md)           | A page displaying a pivot table (also known as _cross-table_)                                                 |
+| [RecoverPasswordPage](https://github.com/restboard/quasar-app-extension-restboard/blob/main/docs/pages/RecoverPasswordPage.md) | A page displaying a password recovery form                                                                    |
+| [ResourceGridPage](https://github.com/restboard/quasar-app-extension-restboard/blob/main/docs/pages/ResourceGridPage.md)       | A page displaying a resource collection as a grid of items                                                    |
+| [ResourceTablePage](https://github.com/restboard/quasar-app-extension-restboard/blob/main/docs/pages/ResourceTablePage.md)     | A page displaying a collection as a table of items                                                            |
 
 ## Contribute
 
