@@ -1,64 +1,69 @@
-import { authProvider } from '../../providers'
+import { authProvider } from "../../providers";
 
-export async function login ({ commit, getters, dispatch }, credentials) {
-  commit('setLastError', null)
-  commit('setLoading', true)
+export async function login({ commit, getters, dispatch }, credentials) {
+  commit("setLastError", null);
+  commit("setLoading", true);
   try {
-    const res = await authProvider.login(credentials)
-    const user = res.data
-    const identity = await authProvider.getIdentity(user)
-    commit('setCurrentUser', user)
-    commit('setLoading', false)
-    commit('setUserIdentity', identity)
+    const res = await authProvider.login(credentials);
+    const user = res.data;
+    const identity = await authProvider.getIdentity(user);
+    commit("setCurrentUser", user);
+    commit("setLoading", false);
+    commit("setUserIdentity", identity);
   } catch (err) {
-    commit('setLastError', err.message)
-    commit('setLoading', false)
-    dispatch('logout')
+    commit("setLastError", err.message);
+    commit("setLoading", false);
+    dispatch("logout");
   }
 }
 
-export async function logout ({ commit }) {
-  commit('setLastError', null)
-  commit('setLoading', true)
+export async function logout({ commit }) {
+  commit("setLastError", null);
+  commit("setLoading", true);
   try {
-    await authProvider.logout()
-    commit('setCurrentUser', null)
-    commit('setLoading', false)
-    commit('setUserIdentity', '')
+    await authProvider.logout();
+    commit("setCurrentUser", null);
+    commit("setLoading", false);
+    commit("setUserIdentity", "");
   } catch (err) {
-    commit('setLastError', err.message)
-    commit('setLoading', false)
+    commit("setLastError", err.message);
+    commit("setLoading", false);
   }
 }
 
-export async function recoverPassword ({ commit }, email) {
-  commit('setLastError', null)
-  commit('setLoading', true)
+export async function recoverPassword({ commit }, email) {
+  commit("setLastError", null);
+  commit("setLoading", true);
   try {
     // TODO...
-    commit('setLoading', false)
+    commit("setLoading", false);
   } catch (err) {
-    commit('setLastError', err.message)
-    commit('setLoading', false)
+    commit("setLastError", err.message);
+    commit("setLoading", false);
   }
 }
 
-export async function checkRoutePermissions (
+export async function checkRoutePermissions(
   { commit, dispatch, state },
   route
 ) {
-  commit('setLastError', null)
+  commit("setLastError", null);
   // Authentication
   try {
-    await authProvider.checkAuth()
+    const res = await authProvider.checkAuth();
+    const user = res.data;
+    const identity = await authProvider.getIdentity(user);
+    commit("setCurrentUser", user);
+    commit("setLoading", false);
+    commit("setUserIdentity", identity);
   } catch (err) {
-    commit('setLastError', err.message)
-    return dispatch('logout')
+    commit("setLastError", err.message);
+    return dispatch("logout");
   }
   // Authorization
   try {
-    await authProvider.can(state.currentUser, route)
+    await authProvider.can(state.currentUser, route);
   } catch (err) {
-    commit('setLastError', err.message)
+    commit("setLastError", err.message);
   }
 }
