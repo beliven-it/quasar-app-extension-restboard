@@ -23,14 +23,14 @@
     "yarn": ">= 1.6.0"
   },
   "devDependencies": {
-    "quasar-app-extension-rb-ui": "^0.34.0",
+    "quasar-app-extension-rb-ui": "^0.35.1",
     "vuelentino": "^0.0.4"
   },
   "dependencies": {
-    "rb-auth-provider-simple": "^0.16.0",
-    "rb-core-module": "^0.26.1",
-    "rb-data-provider-json-server": "^0.25.0",
-    "vue-i18n": "^9.0.0",
-    "vuex": "^4.0.1"
+    "rb-auth-provider-simple": "^0.17.0",
+    "rb-core-module": "^0.27.0",
+    "rb-data-provider-json-server": "^0.26.0",
+    "vue-i18n": "^9.2.2",
+    "vuex": "^4.1.0"
   }
 }
