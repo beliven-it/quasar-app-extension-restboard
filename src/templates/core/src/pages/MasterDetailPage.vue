@@ -25,7 +25,7 @@
               :columns="props.resource.ui.columns"
               :row-key="props.resource.key"
               :rows="props.items"
-              :actions="props.resource.actions"
+              :actions="props.resource.getActions()"
               :selection="selection"
               :selected="selectedRows"
               :pagination="props.pagination"
