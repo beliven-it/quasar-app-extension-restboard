@@ -1,12 +1,11 @@
 import { route } from 'quasar/wrappers'
 import {
-  createRouter,
   createMemoryHistory,
-  createWebHistory,
-  createWebHashHistory
+  createRouter,
+  createWebHashHistory,
+  createWebHistory
 } from 'vue-router'
 import createRoutes from './routes'
-import { WHITELIST_URLS } from '../config'
 
 /*
  * If not building with SSR mode, you can
@@ -44,25 +43,16 @@ export default route(function ({ store }) {
 
   // If user is not authenticated or authorized, redirect her to login page.
   Router.beforeEach(async (to, from, next) => {
-    const routingDescr = `Routing from ${from.path} to ${to.path}...`
-    if (WHITELIST_URLS.indexOf(to.path) !== -1) {
-      console.debug(`[ALLOW] ${routingDescr}`)
-      return next()
-    }
+    const routingDescr = `Routing from ${from.fullPath} to ${to.fullPath}...`;
     try {
-      await store.dispatch('core/checkRoutePermissions', to.path)
-      if (store.state && store.state.core.currentUser) {
-        console.debug(`[ALLOW] ${routingDescr}`)
-        return next()
-      } else {
-        throw new Error(`Unauthorized access to ${to.path}`)
-      }
+      await store.dispatch("core/checkRoutePermissions", to);
+      console.debug(`[ALLOW] ${routingDescr}`);
+      return next();
     } catch (err) {
-      console.debug(`[BLOCK] ${routingDescr}`)
-      console.error(err)
-      return next('/auth/login')
+      console.debug(`[BLOCK] ${routingDescr}`);
+      return next("/auth/login");
     }
-  })
+  });
 
   return Router
 })

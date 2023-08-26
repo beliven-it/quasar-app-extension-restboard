@@ -1,11 +1,11 @@
-import { authProvider } from "../../providers";
+import { WHITELIST_URLS } from "src/config";
+import { authProvider } from "src/providers";
 
 export async function login({ commit, getters, dispatch }, credentials) {
   commit("setLastError", null);
   commit("setLoading", true);
   try {
-    const res = await authProvider.login(credentials);
-    const user = res.data;
+    const { data: user } = await authProvider.login(credentials);
     const identity = await authProvider.getIdentity(user);
     commit("setCurrentUser", user);
     commit("setLoading", false);
@@ -48,22 +48,29 @@ export async function checkRoutePermissions(
   route
 ) {
   commit("setLastError", null);
+  // Check first for whitelisted routes (don't require auth* at all)
+  if (WHITELIST_URLS.includes(route.path)) {
+    return;
+  }
   // Authentication
   try {
-    const res = await authProvider.checkAuth();
-    const user = res.data;
+    const { data: user } = await authProvider.checkAuth();
     const identity = await authProvider.getIdentity(user);
     commit("setCurrentUser", user);
-    commit("setLoading", false);
     commit("setUserIdentity", identity);
+    if (!user) {
+      throw new Error(`Unauthorized access to ${route.fullPath}`);
+    }
   } catch (err) {
     commit("setLastError", err.message);
-    return dispatch("logout");
+    throw err;
   }
   // Authorization
   try {
-    await authProvider.can(state.currentUser, route);
+    const routePerms = route.meta.permissions || [];
+    await authProvider.can(state.currentUser, routePerms);
   } catch (err) {
     commit("setLastError", err.message);
+    throw err;
   }
 }
