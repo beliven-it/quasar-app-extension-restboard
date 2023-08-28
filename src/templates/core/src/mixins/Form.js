@@ -18,6 +18,8 @@ export default {
     },
   },
 
+  emits: ['update:modelValue'],
+
   data () {
     return {
       form: {}
@@ -52,11 +54,9 @@ export default {
     },
 
     form: {
-      handler (val, old) {
-        if (! is.deepEqual(val, old)) {
-          const data = this.serializeData(JSON.parse(JSON.stringify(val)))
-          this.$emit("update:modelValue", data);
-        }
+      handler (val) {
+        const data = this.serializeData(JSON.parse(JSON.stringify(val)))
+        this.$emit("update:modelValue", data);
       },
       deep: true
     }
