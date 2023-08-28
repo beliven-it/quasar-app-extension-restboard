@@ -1,59 +1,64 @@
+import { is } from "quasar";
+
 export default {
-    props: {
-      modelValue: {
-        type: Object,
-        default: () => ({}),
-      },
-  
-      loading: {
-        type: Boolean,
-        default: false,
-      },
-  
-      key: {
-        type: String,
-        default: "id",
-      },
+  props: {
+    modelValue: {
+      type: Object,
+      default: () => ({}),
     },
-  
-    data () {
-      return {
-        form: {}
-      }
+
+    loading: {
+      type: Boolean,
+      default: false,
     },
-  
-    computed: {
-      isUpdating() {
-        return this.modelValue && this.modelValue[this.key];
-      },
+
+    key: {
+      type: String,
+      default: "id",
     },
-  
-    methods: {
-      parseData(data) {
-        return data
-      },
-  
-      serializeData(data) {
-        return data
-      }
+  },
+
+  data () {
+    return {
+      form: {}
+    }
+  },
+
+  computed: {
+    isUpdating() {
+      return this.modelValue && this.modelValue[this.key];
     },
-  
-    watch: {
-      modelValue: {
-        handler (val) {
+  },
+
+  methods: {
+    parseData(data) {
+      return data
+    },
+
+    serializeData(data) {
+      return data
+    }
+  },
+
+  watch: {
+    modelValue: {
+      handler (val, old) {
+        if (! is.deepEqual(val, old)) {
           this.form = this.parseData(JSON.parse(JSON.stringify(val)))
-        },
-        immediate: true,
-        deep: true
+        }
       },
-  
-      form: {
-        handler (val) {
+      immediate: true,
+      deep: true
+    },
+
+    form: {
+      handler (val, old) {
+        if (! is.deepEqual(val, old)) {
           const data = this.serializeData(JSON.parse(JSON.stringify(val)))
           this.$emit("update:modelValue", data);
-        },
-        deep: true
-      }
+        }
+      },
+      deep: true
     }
-  };
-  
+  }
+};
