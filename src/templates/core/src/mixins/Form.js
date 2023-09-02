@@ -28,7 +28,7 @@ export default {
 
   computed: {
     isUpdating() {
-      return this.modelValue && this.modelValue[this.key];
+      return (bool) (this.modelValue && this.modelValue[this.key]);
     },
   },
 
