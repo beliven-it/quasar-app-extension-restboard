@@ -87,21 +87,29 @@ export default defineComponent({
 
   data () {
     return {
-      leftDrawerOpen: false
+      leftDrawerOpen: false,
+      userIdentity: ''
     }
   },
 
   computed: {
     resources () {
       return Object.values(this.$rb)
-    },
-
-    userIdentity () {
-      return this.$auth.user ? this.$auth.getIdentity(this.$auth.user) : ''
     }
   },
 
+  mounted () {
+    this.reloadUserIdentity()
+  },
+
   methods: {
+    reloadUserIdentity() {
+      if (this.$auth.user) {
+        this.$auth.getIdentity(this.$auth.user)
+          .then(identity => this.userIdentity = identity)
+      }
+    },
+
     onToggleLeftDrawer () {
       this.leftDrawerOpen = !this.leftDrawerOpen
     },
