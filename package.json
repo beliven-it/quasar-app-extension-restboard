@@ -1,6 +1,6 @@
 {
   "name": "quasar-app-extension-restboard",
-  "version": "0.36.4",
+  "version": "0.37.0",
   "description": "A starter kit to install Restboard in a fresh new Quasar project",
   "author": "Emanuele Bertoldi <emanuele.bertoldi@gmail.com>",
   "license": "MIT",
@@ -29,8 +29,6 @@
   "dependencies": {
     "rb-auth-provider-simple": "^0.20.1",
     "rb-core-module": "^0.30.0",
-    "rb-data-provider-json-server": "^0.29.1",
-    "vue-i18n": "^9.2.2",
-    "vuex": "^4.1.0"
+    "rb-data-provider-json-server": "^0.29.1"
   }
 }

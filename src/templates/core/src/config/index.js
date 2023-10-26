@@ -1,1 +1,4 @@
-export const WHITELIST_URLS = ['/auth/login', '/auth/recovery']
+export const WHITELIST_URLS = [
+    '/auth/login',
+    '/auth/recovery'
+]
