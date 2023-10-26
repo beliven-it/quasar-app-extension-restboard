@@ -51,9 +51,7 @@ export default defineComponent({
     },
 
     onRecoverPasswordRequest() {
-      this.$store
-        .dispatch("core/recoverPassword", this.username)
-        .then(() => this.$router.push("/auth/login"));
+      // TODO: add implementation here...
     },
   },
 });

@@ -16,7 +16,6 @@ module.exports = function (api) {
   }
 
   api.extendQuasarConf(conf => {
-    conf.boot.push('rb-router')
     conf.boot.push('rb')
   
     // make sure boot & component files get transpiled (only for Webpack)

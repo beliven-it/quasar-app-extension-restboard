@@ -97,7 +97,7 @@ export default defineComponent({
     },
 
     userIdentity () {
-      return this.$store.state.core.userIdentity
+      return this.$auth.user ? this.$auth.getIdentity(this.$auth.user) : ''
     }
   },
 
@@ -111,8 +111,10 @@ export default defineComponent({
     },
 
     onLogout () {
-      this.$store.dispatch('core/logout')
-        .then(() => this.$router.push('/auth/login'))
+      this.$auth.logout().then(() => {
+        this.$auth.user = null
+        this.$router.push('/auth/login')
+      })
     }
   }
 })

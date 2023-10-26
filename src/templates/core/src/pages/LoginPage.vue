@@ -74,9 +74,9 @@ export default defineComponent({
         password: this.password,
         keepLogged: this.keepLogged,
       };
-      this.$store
-        .dispatch("core/login", credentials)
-        .then(() => this.$router.push("/"));
+      this.$auth.login(credentials).then(() => {
+        this.$router.push("/")
+      });
     },
 
     onForgotPassword() {
