@@ -72,6 +72,10 @@ export default ({ app, router }) => {
           path: "",
           component: () => import("pages/IndexPage.vue"),
         },
+        {
+          path: "profile",
+          component: () => import("pages/ProfilePage.vue"),
+        },
         // Add default routes for each registered resource
         ...Object.values(resources).map((resource) => {
           return {
