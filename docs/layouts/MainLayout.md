@@ -6,8 +6,8 @@
 
 | Name       | Type          | Description     | Default                  |
 |------------|---------------|-----------------|--------------------------|
-| `view` | `string` |  | `'hHh Lpr lFf'` |
-| `title` | `string` |  | `'Restboard'` |
+| `view` | `string` |  | `"hHh Lpr lFf"` |
+| `title` | `string` |  | `"Restboard"` |
 | `toolbarClass` | `string, object|array` |  | `` |
 | `toolbarStyle` | `string, object|array` |  | `` |
 | `sidebarClass` | `string, object|array` |  | `` |
@@ -19,7 +19,6 @@
 
 | Name       | Scoped        |
 |------------|---------------|
-| `logo` | true |
 
 ## Events
 

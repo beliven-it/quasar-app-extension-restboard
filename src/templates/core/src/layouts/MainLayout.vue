@@ -1,13 +1,7 @@
 <template>
-  <q-layout
-    :class="$attrs.class || 'bg-grey-1'"
-    :view="view"
-  >
+  <q-layout :class="$attrs.class || 'bg-grey-1'" :view="view">
     <q-header elevated>
-      <q-toolbar
-        :class="toolbarClass"
-        :style="toolbarStyle"
-      >
+      <q-toolbar :class="toolbarClass" :style="toolbarStyle">
         <q-btn
           flat
           dense
@@ -21,11 +15,8 @@
           class="row col-auto items-center q-gutter-md cursor-pointer"
           @click="onGoHome"
         >
-          <slot name="logo" v-bind="$props" />
           <span>{{ title }}</span>
         </q-toolbar-title>
-
-        <img src="~assets/logo.svg" height="40" :alt="title" />
 
         <q-space />
 
@@ -33,16 +24,9 @@
           <div v-if="showIdentity && $q.screen.gt.sm">
             {{ userIdentity }}
           </div>
-          <q-btn
-            flat round dense 
-            class="q-ml-sm"
-            icon="account_circle"
-          >
+          <q-btn flat round dense class="q-ml-sm" icon="account_circle">
             <q-menu>
-              <div class="column items-center q-pa-md">
-                <q-avatar v-if="userAvatar" size="80px">
-                  <img alt="avatar" :src="userAvatar" />
-                </q-avatar>
+              <div class="column items-center q-pa-md" style="min-width: 250px">
                 <div class="text-subtitle2 q-mt-sm q-mb-xs">
                   {{ userIdentity }}
                 </div>
@@ -88,7 +72,12 @@
           </q-item-section>
           <q-item-section>{{ $t("Dashboard") }}</q-item-section>
         </q-item>
-        <q-item :to="`/${resource.name}`" clickable>
+        <q-item
+          v-for="resource in visibileResources"
+          :key="resource.name"
+          :to="`/${resource.name}`"
+          clickable
+        >
           <q-item-section avatar>
             <q-icon :name="resource.ui.icon" />
           </q-item-section>
@@ -106,104 +95,96 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'MainLayout',
+  name: "MainLayout",
 
   props: {
     view: {
       type: String,
-      default: 'hHh Lpr lFf'
+      default: "hHh Lpr lFf",
     },
 
     title: {
       type: String,
-      default: 'Restboard'
+      default: "Restboard",
     },
 
     toolbarClass: {
-      type: [String, Object, Array]
+      type: [String, Object, Array],
     },
 
     toolbarStyle: {
-      type: [String, Object, Array]
+      type: [String, Object, Array],
     },
 
     sidebarClass: {
-      type: [String, Object, Array]
+      type: [String, Object, Array],
     },
 
     sidebarStyle: {
-      type: [String, Object, Array]
+      type: [String, Object, Array],
     },
 
     showIdentity: {
       type: Boolean,
-      default: true
+      default: true,
     },
-    
+
     miniSidebar: {
-      type: Boolean
-    }
+      type: Boolean,
+    },
   },
 
-  data () {
+  data() {
     return {
       leftDrawerOpen: false,
       userIdentity: null,
-      userAvatar: null
-    }
+    };
   },
 
   computed: {
-    resources () {
-      return Object.values(this.$rb || {})
+    resources() {
+      return Object.values(this.$rb || {});
     },
 
     visibileResources() {
-      return this.resources.filter(r => !r.ui.excludeSidebar)
+      return this.resources.filter((r) => !r.ui.excludeSidebar);
     },
   },
 
-  mounted () {
-    this.reloadUserInfo()
+  mounted() {
+    this.reloadUserInfo();
   },
 
   methods: {
     async reloadUserInfo() {
       if (this.$auth.user) {
-        const [identity, avatar] = await Promise.all(
-          this.$auth.getIdentity(this.$auth.user),
-          this.$auth.getUserAvatar(this.$auth.user)
-        )
-        this.userIdentity = identity
-        this.userAvatar = avatar
+        this.userIdentity = await this.$auth.getIdentity(this.$auth.user);
       } else {
-        this.userIdentity = null
-        this.userAvatar = null
+        this.userIdentity = null;
       }
     },
 
-    onToggleLeftDrawer () {
-      this.leftDrawerOpen = !this.leftDrawerOpen
+    onToggleLeftDrawer() {
+      this.leftDrawerOpen = !this.leftDrawerOpen;
     },
 
     onGoHome() {
       this.$router.push("/");
     },
 
-    onShowProfile () {
-      this.$router.push('/profile')
+    onShowProfile() {
+      this.$router.push("/profile");
     },
 
-    onLogout () {
+    onLogout() {
       this.$auth.logout().then(() => {
-        this.$auth.user = null
-        this.$router.push('/auth/login')
-      })
-    }
-  }
-})
+        this.$auth.user = null;
+        this.$router.push("/auth/login");
+      });
+    },
+  },
+});
 </script>
-
