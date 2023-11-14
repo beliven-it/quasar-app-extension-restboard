@@ -1,12 +1,11 @@
 <template>
-  <q-page class="flex justify-center">
+  <q-page class="flex justify-center q-pa-none">
     <q-splitter
       v-model="splitterModel"
       class="full-width"
-      :horizontal="horizontal"
-      :before-class="horizontal ? 'full-width q-pa-xs' : 'full-height q-pa-xs'"
-      :after-class="horizontal ? 'full-width q-pa-xs' : 'full-height q-pa-xs'"
-      :separator-class="horizontal ? 'q-my-lg' : 'q-mx-lg'"
+      :horizontal="horizontal || $q.screen.lt.md"
+      before-class="q-layout-padding"
+      after-class="full-width"
     >
       <template v-slot:before>
         <rb-resource-collection
@@ -38,7 +37,8 @@
                   round
                   dense
                   icon="sync"
-                  class="text-grey-7"
+                  color="grey-7"
+                  :title="$t('Refresh')"
                   @click="props.clearAndReloadData()"
                 />
               </template>
@@ -73,16 +73,17 @@
             @dismiss="onFormDismissed"
           />
         </rb-resource-instance>
-        <div v-else class="fit column items-center">
-          <div class="column q-gutter-sm text-center" style="max-width: 200px">
-            <p>{{ $t("Select an item from the list or") }}</p>
-            <q-btn
-              color="primary"
-              icon="add"
-              :label="$t('Add new')"
-              @click="onAddNewRow"
-            />
-          </div>
+        <div
+          v-else
+          class="fit column flex-center q-gutter-y-lg"
+        >
+          <q-img src="~/assets/add.svg" width="150px"/>
+          <q-btn
+            icon="add"
+            color="primary"
+            :label="$t('Add new')"
+            @click="onAddNewRow"
+          />
         </div>
       </template>
     </q-splitter>
