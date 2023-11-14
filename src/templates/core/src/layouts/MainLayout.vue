@@ -4,26 +4,73 @@
     :view="view"
   >
     <q-header elevated>
-      <rb-toolbar
+      <q-toolbar
         :class="toolbarClass"
         :style="toolbarStyle"
-        :title="title"
-        :is-menu-open="leftDrawerOpen"
-        @toggle-menu="onToggleLeftDrawer"
       >
-        <template v-slot:logo>
-          <img src="~assets/logo.svg" height="40" :alt="title" />
-        </template>
-
-        <rb-user-area
-          :show-identity="showIdentity && $q.screen.gt.sm"
-          :user-avatar="userAvatar"
-          :user-identity="userIdentity"
-          :tenant-identity="tenantIdentity"
-          @profile="onShowProfile"
-          @logout="onLogout"
+        <q-btn
+          flat
+          dense
+          round
+          aria-label="Menu"
+          :icon="leftDrawerOpen ? 'menu_open' : 'menu'"
+          @click="onToggleLeftDrawer"
         />
-      </rb-toolbar>
+
+        <q-toolbar-title
+          class="row col-auto items-center q-gutter-md cursor-pointer"
+          @click="onGoHome"
+        >
+          <slot name="logo" v-bind="$props" />
+          <span>{{ title }}</span>
+        </q-toolbar-title>
+
+        <img src="~assets/logo.svg" height="40" :alt="title" />
+
+        <q-space />
+
+        <div class="row items-center q-gutter-sm">
+          <div v-if="showIdentity && $q.screen.gt.sm">
+            {{ userIdentity }}
+          </div>
+          <q-btn
+            flat round dense 
+            class="q-ml-sm"
+            icon="account_circle"
+          >
+            <q-menu>
+              <div class="column items-center q-pa-md">
+                <q-avatar v-if="userAvatar" size="80px">
+                  <img alt="avatar" :src="userAvatar" />
+                </q-avatar>
+                <div class="text-subtitle2 q-mt-sm q-mb-xs">
+                  {{ userIdentity }}
+                </div>
+              </div>
+              <q-separator />
+              <q-list separator>
+                <q-item clickable @click="onShowProfile">
+                  <q-item-section>
+                    <q-item-label>{{ $t("My Profile") }}</q-item-label>
+                  </q-item-section>
+                  <q-item-section side>
+                    <q-icon name="badge" />
+                  </q-item-section>
+                </q-item>
+
+                <q-item clickable @click="onLogout">
+                  <q-item-section>
+                    <q-item-label>{{ $t("Logout") }}</q-item-label>
+                  </q-item-section>
+                  <q-item-section side>
+                    <q-icon name="exit_to_app" />
+                  </q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </q-btn>
+        </div>
+      </q-toolbar>
     </q-header>
 
     <q-drawer
@@ -34,7 +81,22 @@
       :class="sidebarClass"
       :style="sidebarStyle"
     >
-      <rb-sidebar :resources="resources" />
+      <q-list separator>
+        <q-item to="/" exact clickable>
+          <q-item-section avatar>
+            <q-icon name="home" />
+          </q-item-section>
+          <q-item-section>{{ $t("Dashboard") }}</q-item-section>
+        </q-item>
+        <q-item :to="`/${resource.name}`" clickable>
+          <q-item-section avatar>
+            <q-icon :name="resource.ui.icon" />
+          </q-item-section>
+          <q-item-section>
+            {{ $t(resource.label || resource.name) }}
+          </q-item-section>
+        </q-item>
+      </q-list>
     </q-drawer>
 
     <q-page-container>
@@ -44,7 +106,7 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'MainLayout',
@@ -54,32 +116,33 @@ export default defineComponent({
       type: String,
       default: 'hHh Lpr lFf'
     },
+
     title: {
       type: String,
       default: 'Restboard'
     },
+
     toolbarClass: {
       type: [String, Object, Array]
     },
+
     toolbarStyle: {
       type: [String, Object, Array]
     },
+
     sidebarClass: {
       type: [String, Object, Array]
     },
+
     sidebarStyle: {
       type: [String, Object, Array]
     },
+
     showIdentity: {
       type: Boolean,
       default: true
     },
-    userAvatar: {
-      type: String
-    },
-    tenantIdentity: {
-      type: String
-    },
+    
     miniSidebar: {
       type: Boolean
     }
@@ -88,30 +151,46 @@ export default defineComponent({
   data () {
     return {
       leftDrawerOpen: false,
-      userIdentity: ''
+      userIdentity: null,
+      userAvatar: null
     }
   },
 
   computed: {
     resources () {
-      return Object.values(this.$rb)
-    }
+      return Object.values(this.$rb || {})
+    },
+
+    visibileResources() {
+      return this.resources.filter(r => !r.ui.excludeSidebar)
+    },
   },
 
   mounted () {
-    this.reloadUserIdentity()
+    this.reloadUserInfo()
   },
 
   methods: {
-    reloadUserIdentity() {
+    async reloadUserInfo() {
       if (this.$auth.user) {
-        this.$auth.getIdentity(this.$auth.user)
-          .then(identity => this.userIdentity = identity)
+        const [identity, avatar] = await Promise.all(
+          this.$auth.getIdentity(this.$auth.user),
+          this.$auth.getUserAvatar(this.$auth.user)
+        )
+        this.userIdentity = identity
+        this.userAvatar = avatar
+      } else {
+        this.userIdentity = null
+        this.userAvatar = null
       }
     },
 
     onToggleLeftDrawer () {
       this.leftDrawerOpen = !this.leftDrawerOpen
+    },
+
+    onGoHome() {
+      this.$router.push("/");
     },
 
     onShowProfile () {
