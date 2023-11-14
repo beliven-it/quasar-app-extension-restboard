@@ -13,14 +13,13 @@
 | `sidebarClass` | `string, object|array` |  | `` |
 | `sidebarStyle` | `string, object|array` |  | `` |
 | `showIdentity` | `boolean` |  | `true` |
-| `userAvatar` | `string` |  | `` |
-| `tenantIdentity` | `string` |  | `` |
 | `miniSidebar` | `boolean` |  | `` |
 
 ## Slots
 
 | Name       | Scoped        |
 |------------|---------------|
+| `logo` | true |
 
 ## Events
 
