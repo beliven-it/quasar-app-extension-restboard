@@ -8,6 +8,10 @@
       after-class="full-width"
     >
       <template v-slot:before>
+        <q-breadcrumbs class="q-mb-md text-subtitle1">
+          <q-breadcrumbs-el icon="home" to="/" />
+          <q-breadcrumbs-el :label="resource.label" />
+        </q-breadcrumbs>
         <rb-resource-collection
           :keep-on-empty="keepOnEmpty"
           :resource="resource"
@@ -73,11 +77,8 @@
             @dismiss="onFormDismissed"
           />
         </rb-resource-instance>
-        <div
-          v-else
-          class="fit column flex-center q-gutter-y-lg"
-        >
-          <q-img src="~/assets/add.svg" width="150px"/>
+        <div v-else class="fit column flex-center q-gutter-y-lg">
+          <q-img src="~/assets/add.svg" width="150px" />
           <q-btn
             icon="add"
             color="primary"

@@ -1,6 +1,10 @@
 <template>
-  <q-page class="flex justify-center">
-    <rb-container :full-width="fullWidth">
+  <q-page class="column">
+    <q-breadcrumbs class="col-auto q-mb-md text-subtitle1">
+      <q-breadcrumbs-el icon="home" to="/" />
+      <q-breadcrumbs-el :label="resource.label" />
+    </q-breadcrumbs>
+    <rb-container class="col" :full-width="fullWidth">
       <rb-resource-collection
         :keep-on-empty="keepOnEmpty"
         :resource="resource"
