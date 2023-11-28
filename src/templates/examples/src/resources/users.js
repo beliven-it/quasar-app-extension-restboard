@@ -20,14 +20,14 @@ export default createResource({
       },
     },
   },
-  // actions: {
-  //   edit: {
-  //     icon: 'edit',
-  //     async run (item) {
-  //       // ...
-  //     }
-  //   }
-  // },
+  actions: {
+    delete: {
+      icon: "delete",
+      async run(item) {
+        this.deleteOne(this.getKey(item));
+      },
+    },
+  },
   ui: {
     icon: "group",
     // indexComponent: defineAsyncComponent(() =>
