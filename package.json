@@ -1,6 +1,6 @@
 {
   "name": "quasar-app-extension-restboard",
-  "version": "0.42.1",
+  "version": "0.42.2",
   "description": "A starter kit to install Restboard in a fresh new Quasar project",
   "author": "Emanuele Bertoldi <emanuele.bertoldi@gmail.com>",
   "license": "MIT",
