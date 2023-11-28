@@ -25,7 +25,18 @@
             :cell-key="cellKey"
             :with-column-total="withColumnTotal"
             :with-row-total="withRowTotal"
-          />
+          >
+            <template #top-actions>
+              <q-btn
+                flat
+                round
+                dense
+                icon="sync"
+                class="text-grey-7"
+                @click="props.clearAndReloadData()"
+              />
+            </template>
+          </rb-pivot-data-table>
         </template>
 
         <template #empty>
