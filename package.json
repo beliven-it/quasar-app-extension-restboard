@@ -23,7 +23,7 @@
     "yarn": ">= 1.6.0"
   },
   "devDependencies": {
-    "quasar-app-extension-rb-ui": "^0.42.0",
+    "quasar-app-extension-rb-ui": "^0.43.0",
     "vuelentino": "^0.0.4"
   },
   "dependencies": {
