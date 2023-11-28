@@ -23,6 +23,7 @@ export default createResource({
   actions: {
     delete: {
       icon: "delete",
+      class: "text-negative",
       async run(item) {
         this.deleteOne(this.getKey(item));
       },
