@@ -24,6 +24,9 @@ export default createResource({
     delete: {
       icon: "delete",
       class: "text-negative",
+      isVisible(item) {
+        return !!this.getKey(item);
+      },
       async run(item) {
         this.deleteOne(this.getKey(item));
       },
