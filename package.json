@@ -32,7 +32,5 @@
     "rb-core-module": "^0.30.0",
     "rb-data-provider-json-server": "^0.29.1"
   },
-  "bin": {
-    "rb": "./cli/index.js"
-  }
+  "bin": "./cli/index.js"
 }
