@@ -18,6 +18,10 @@ function installCoreModule(api) {
   const deps = {
     dependencies: restboardPackageJson.dependencies,
     devDependencies: restboardPackageJson.devDependencies,
+    bin: {
+      restboard:
+        "./node_modules/quasar-app-extension-restboard/src/cli/index.js",
+    },
   };
 
   // Remove "vuelentino" from target deps bundle
