@@ -23,6 +23,7 @@
     "yarn": ">= 1.6.0"
   },
   "devDependencies": {
+    "commander": "^11.1.0",
     "quasar-app-extension-rb-ui": "^0.44.1",
     "vuelentino": "^0.0.4"
   },
@@ -30,5 +31,8 @@
     "rb-auth-provider-simple": "^0.20.1",
     "rb-core-module": "^0.30.0",
     "rb-data-provider-json-server": "^0.29.1"
+  },
+  "bin": {
+    "rb": "./cli/index.js"
   }
 }
