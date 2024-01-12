@@ -20,16 +20,16 @@ async function checkRoutePermissions(route) {
 }
 
 export default ({ app, router }) => {
-  function install (Vue) {
+  function install(Vue) {
     // Register the auth provider as the global $auth object
-    Vue.config.globalProperties.$auth = authProvider
+    Vue.config.globalProperties.$auth = authProvider;
 
     // Add a global $rb object to access registered resources
-    Vue.config.globalProperties.$rb = resources
+    Vue.config.globalProperties.$rb = resources;
 
     // Add a mock for vue-i18n when not installed
     if (!app.config.globalProperties.$t) {
-      app.config.globalProperties.$t = s => s
+      app.config.globalProperties.$t = (s) => s;
     }
 
     // Execute an auth gate before each route
@@ -39,11 +39,15 @@ export default ({ app, router }) => {
         if (!authorized) {
           throw new Error(`Unauthorized access to ${to.fullPath}`);
         }
-        console.debug(`[ALLOW] Routing from ${from.fullPath} to ${to.fullPath}...`);
+        console.debug(
+          `[ALLOW] Routing from ${from.fullPath} to ${to.fullPath}...`
+        );
         return next();
       } catch (err) {
-        console.error(err)
-        console.debug(`[BLOCK] Routing from ${from.fullPath} to ${to.fullPath}...`);
+        console.error(err);
+        console.debug(
+          `[BLOCK] Routing from ${from.fullPath} to ${to.fullPath}...`
+        );
         return next("/auth/login");
       }
     });
@@ -62,7 +66,7 @@ export default ({ app, router }) => {
           component: () => import("pages/RecoverPasswordPage.vue"),
         },
       ],
-    })
+    });
 
     router.addRoute({
       path: "/",
@@ -85,13 +89,14 @@ export default ({ app, router }) => {
               : () => import("pages/MasterDetailPage.vue"),
             props: {
               resource,
+              keepOnEmpty: true,
               padding: true,
             },
           };
         }),
       ],
-    })
+    });
   }
 
-  app.use(install)
-}
+  app.use(install);
+};
