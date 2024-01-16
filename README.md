@@ -107,7 +107,7 @@ export default {
 
 ## CLI
 
-A CLI (Command-Line Interface) is provided out-of-box to add new resources to
+A CLI (Command-Line Interface) is provided out-of-the-box to add new resources to
 your app:
 
 ```bash
