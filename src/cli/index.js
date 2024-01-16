@@ -29,9 +29,13 @@ export default createResource({
   name: "${name}",
   provider: dataProvider
 });`;
-    fs.writeFile(`src/resources/${name}.js`, content, (err) => {
+    const outfile = `src/resources/${name}.js`;
+    fs.writeFile(outfile, content, (err) => {
       if (err) {
         console.error(err);
+      } else {
+        console.log(`Resource succesfully created at ${outfile}`);
+        console.log("Remember to include it to src/resources/index.js");
       }
     });
   });
