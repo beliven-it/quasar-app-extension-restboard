@@ -96,9 +96,9 @@ export default {
 
 | Name                                                                                                                             | Description                                                                                                   |
 | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| [IndexPage](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/pages/IndexPage.md)                     | A dashboard homepage |
+| [IndexPage](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/pages/IndexPage.md)                     | A dashboard main page |
 | [LoginPage](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/pages/LoginPage.md)                     | A page displaying a login form |
-| [MasterDetailPage](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/pages/MasterDetailPage.md)       | A page displaying a resource collection as a table with the ability to select and show details of one of them |
+| [MasterDetailPage](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/pages/MasterDetailPage.md)       | A page displaying a resource collection with the ability to select and show details of one of them |
 | [PivotTablePage](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/pages/PivotTablePage.md)           | A page displaying a pivot table (also known as _cross-table_) |
 | [ProfilePage](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/pages/ProfilePage.md) | A page displaying current user profile details |
 | [RecoverPasswordPage](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/pages/RecoverPasswordPage.md) | A page displaying a password recovery form |

@@ -1,6 +1,6 @@
 # FullPageFormLayout
 
-> 
+> A layout used to display a page with a single, full-page form
 
 ## Props
 

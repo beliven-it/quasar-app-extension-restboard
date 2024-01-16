@@ -97,6 +97,9 @@
 <script>
 import { defineComponent } from "vue";
 
+/**
+ * A layout used to display a page with a header, sidebar and main content area
+ */
 export default defineComponent({
   name: "MainLayout",
 

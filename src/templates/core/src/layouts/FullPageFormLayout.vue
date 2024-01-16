@@ -9,9 +9,12 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
+/**
+ * A layout used to display a page with a single, full-page form
+ */
 export default defineComponent({
-  name: 'FullPageFormLayout'
-})
+  name: "FullPageFormLayout",
+});
 </script>

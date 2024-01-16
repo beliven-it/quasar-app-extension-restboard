@@ -1,6 +1,8 @@
 # IndexPage
 
-> 
+> A dashboard main page
+
+Can be used for example to show stats, overview panels and so on...
 
 ## Props
 

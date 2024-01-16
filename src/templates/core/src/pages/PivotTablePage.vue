@@ -50,6 +50,9 @@
 <script>
 import { defineComponent } from "vue";
 
+/**
+ * A page displaying a pivot table (also known as "cross-table")
+ */
 export default defineComponent({
   name: "PivotTablePage",
 

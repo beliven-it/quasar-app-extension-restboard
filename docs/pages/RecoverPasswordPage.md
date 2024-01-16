@@ -1,6 +1,6 @@
 # RecoverPasswordPage
 
-> 
+> A page displaying a password recovery form
 
 ## Props
 

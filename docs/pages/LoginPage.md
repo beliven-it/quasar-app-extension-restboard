@@ -1,6 +1,6 @@
 # LoginPage
 
-> 
+> A page displaying a login form
 
 ## Props
 

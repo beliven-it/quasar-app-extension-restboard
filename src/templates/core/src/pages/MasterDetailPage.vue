@@ -94,6 +94,10 @@
 <script>
 import { defineComponent, ref } from "vue";
 
+/**
+ * A page displaying a resource collection with the ability to select
+ * and show details of one of them
+ */
 export default defineComponent({
   name: "MasterDetailPage",
 

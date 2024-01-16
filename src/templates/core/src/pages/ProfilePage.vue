@@ -24,6 +24,9 @@
 <script>
 import { defineComponent } from "vue";
 
+/**
+ * A page displaying current user profile details
+ */
 export default defineComponent({
   name: "ProfilePage",
 
@@ -39,11 +42,12 @@ export default defineComponent({
 
   methods: {
     reloadUserIdentity() {
-      if (this.$auth.user) {
-        this.$auth
-          .getIdentity(this.$auth.user)
-          .then((identity) => (this.userIdentity = identity));
+      if (!this.$auth?.user) {
+        return;
       }
+      this.$auth
+        .getIdentity(this.$auth.user)
+        .then((identity) => (this.userIdentity = identity));
     },
   },
 });

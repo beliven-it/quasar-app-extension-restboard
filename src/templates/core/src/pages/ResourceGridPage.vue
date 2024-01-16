@@ -51,6 +51,9 @@
 <script>
 import { defineComponent } from "vue";
 
+/**
+ * A page displaying a resource collection as a grid of item
+ */
 export default defineComponent({
   name: "ResourceGridPage",
 

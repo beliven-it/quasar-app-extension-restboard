@@ -55,6 +55,9 @@
 <script>
 import { defineComponent } from "vue";
 
+/**
+ * A page displaying a login form
+ */
 export default defineComponent({
   name: "LoginPage",
 
@@ -75,7 +78,7 @@ export default defineComponent({
         keepLogged: this.keepLogged,
       };
       this.$auth.login(credentials).then(() => {
-        this.$router.push("/")
+        this.$router.push("/");
       });
     },
 

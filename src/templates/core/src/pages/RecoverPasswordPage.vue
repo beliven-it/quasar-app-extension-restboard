@@ -36,6 +36,9 @@
 <script>
 import { defineComponent } from "vue";
 
+/**
+ * A page displaying a password recovery form
+ */
 export default defineComponent({
   name: "RecoverPasswordPage",
 

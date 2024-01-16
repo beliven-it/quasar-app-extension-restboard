@@ -51,6 +51,9 @@
 <script>
 import { defineComponent } from "vue";
 
+/**
+ * A page displaying a collection as a table of items
+ */
 export default defineComponent({
   name: "ResourceTablePage",
 

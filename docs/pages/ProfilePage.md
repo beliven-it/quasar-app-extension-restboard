@@ -1,6 +1,6 @@
 # ProfilePage
 
-> 
+> A page displaying current user profile details
 
 ## Props
 
