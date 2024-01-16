@@ -105,6 +105,25 @@ export default {
 | [ResourceGridPage](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/pages/ResourceGridPage.md)       | A page displaying a resource collection as a grid of items |
 | [ResourceTablePage](https://github.com/restboard/quasar-app-extension-restboard/blob/master/docs/pages/ResourceTablePage.md)     | A page displaying a collection as a table of items |
 
+## CLI
+
+A CLI (Command-Line Interface) is provided out-of-box to add new resources to
+your app:
+
+```bash
+# or: npx restboard -v
+$ npx rb -v
+
+# To show help:
+$ npx rb -h 
+
+# To create a new resource at src/resources/posts.js
+$ npx rb create:resource posts
+
+# equivalent to:
+$ npx rb c:r posts
+```
+
 ## Contribute
 
 If you want, you can also freely donate to fund the project development:

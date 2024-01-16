@@ -21,6 +21,7 @@ function installCoreModule(api) {
     bin: {
       restboard:
         "./node_modules/quasar-app-extension-restboard/src/cli/index.js",
+      rb: "./node_modules/quasar-app-extension-restboard/src/cli/index.js",
     },
   };
 

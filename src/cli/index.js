@@ -1,16 +1,19 @@
 #! /usr/bin/env node
 const fs = require("node:fs");
 const { Command } = require("commander");
+const { version } = require("../../package.json");
 
 const program = new Command();
 
 program
-  .name("rb")
+  .name("restboard")
+  .alias("rb")
   .description("A CLI to scaffold and/or extend a Restboard project")
-  .version("0.0.1");
+  .version(version, "-v, --version", "output the current version");
 
 program
   .command("create:resource")
+  .alias("c:r")
   .description("Create a new resource")
   .argument("<string>", "name")
   .action((name) => {
