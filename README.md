@@ -2,6 +2,8 @@
 
 A starter kit to install [Restboard](https://restboard.github.io/) in a fresh new [Quasar Framework](https://donate.quasar.dev) project
 
+<img src="https://restboard.github.io/static/media/img/screenshot.png" style="width:100%;max-width:600px"/>
+
 ## Install
 
 ```bash
