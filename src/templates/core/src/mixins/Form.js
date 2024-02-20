@@ -18,47 +18,47 @@ export default {
     },
   },
 
-  emits: ['update:modelValue'],
+  emits: ["update:modelValue"],
 
-  data () {
+  data() {
     return {
-      form: {}
-    }
+      form: {},
+    };
   },
 
   computed: {
     isUpdating() {
-      return (bool) (this.modelValue && this.modelValue[this.key]);
+      return Boolean(this.modelValue && this.modelValue[this.key]);
     },
   },
 
   methods: {
     parseData(data) {
-      return data
+      return data;
     },
 
     serializeData(data) {
-      return data
-    }
+      return data;
+    },
   },
 
   watch: {
     modelValue: {
-      handler (val, old) {
-        if (! is.deepEqual(val, old)) {
-          this.form = this.parseData(JSON.parse(JSON.stringify(val)))
+      handler(val, old) {
+        if (!is.deepEqual(val, old)) {
+          this.form = this.parseData(JSON.parse(JSON.stringify(val)));
         }
       },
       immediate: true,
-      deep: true
+      deep: true,
     },
 
     form: {
-      handler (val) {
-        const data = this.serializeData(JSON.parse(JSON.stringify(val)))
+      handler(val) {
+        const data = this.serializeData(JSON.parse(JSON.stringify(val)));
         this.$emit("update:modelValue", data);
       },
-      deep: true
-    }
-  }
+      deep: true,
+    },
+  },
 };
