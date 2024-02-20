@@ -34,18 +34,13 @@ export default createResource({
   },
   ui: {
     icon: "group",
-    // indexComponent: defineAsyncComponent(() =>
-    //   import("pages/ResourceGridPage.vue")
-    // ),
-    // cardComponent: defineAsyncComponent(() =>
-    //   import('components/ResourceCard.vue')
-    // ),
     formComponent: defineAsyncComponent(() =>
       import("components/UserForm.vue")
     ),
     columns: [
       {
         name: "id",
+        sortable: true,
       },
       {
         name: "name",

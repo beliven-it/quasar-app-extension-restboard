@@ -22,12 +22,47 @@ program
       return;
     }
 
+    const capName = name.charAt(0).toUpperCase() + name.slice(1);
+
     const content = `import { createResource } from "rb-core-module";
 import { dataProvider } from "../providers";
 
 export default createResource({
   name: "${name}",
-  provider: dataProvider
+  provider: dataProvider,
+  // displayAttr: "...",
+  // schema: {
+  //   type: "object",
+  //   properties: {
+  //   },
+  // },
+  actions: {
+    delete: {
+      icon: "delete",
+      class: "text-negative",
+      isVisible(item) {
+        return !!this.getKey(item);
+      },
+      async run(item) {
+        this.deleteOne(this.getKey(item));
+      },
+    },
+  },
+  ui: {
+    // icon: "...",
+    // indexComponent: defineAsyncComponent(() =>
+    //   import("pages/${capName}Page.vue")
+    // ),
+    // formComponent: defineAsyncComponent(() =>
+    //   import("components/${capName}Form.vue")
+    // ),
+    // columns: [
+    //   {
+    //     name: "id",
+    //     sortable: true
+    //   }
+    // ],
+  }
 });`;
     const outfile = `src/resources/${name}.js`;
     fs.writeFile(outfile, content, (err) => {
