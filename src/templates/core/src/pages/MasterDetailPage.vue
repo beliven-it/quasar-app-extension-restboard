@@ -55,36 +55,38 @@
         </rb-resource-collection>
       </template>
       <template v-slot:after>
-        <rb-resource-instance
-          v-if="activeRow"
-          ref="resourceInstance"
-          :id="activeRow[resource.key]"
-          :resource="resource"
-          v-slot="props"
-          @loaded="onLoadedItem"
-          @error="onError"
-        >
-          <rb-form-wrapper
-            class="fit"
-            dismissible
+        <div class="fit" style="max-height: calc(100vh - 50px)">
+          <rb-resource-instance
+            v-if="resource && activeRow"
+            ref="resourceInstance"
+            :id="activeRow[resource.key]"
             :resource="resource"
-            :id="props.id"
-            :schema="props.schema"
-            :loading="props.loading"
-            :saving="props.saving"
-            :model-value="props.instance"
-            @submit="onFormSubmitted"
-            @dismiss="onFormDismissed"
-          />
-        </rb-resource-instance>
-        <div v-else class="fit column flex-center q-gutter-y-lg">
-          <q-img src="~/assets/add.svg" width="150px" />
-          <q-btn
-            icon="add"
-            color="primary"
-            :label="$t('Add new')"
-            @click="onAddNewRow"
-          />
+            v-slot="props"
+            @loaded="onLoadedItem"
+            @error="onError"
+          >
+            <rb-form-wrapper
+              class="fit"
+              dismissible
+              :resource="resource"
+              :id="props.id"
+              :schema="props.schema"
+              :loading="props.loading"
+              :saving="props.saving"
+              :model-value="props.instance"
+              @submit="onFormSubmitted"
+              @dismiss="onFormDismissed"
+            />
+          </rb-resource-instance>
+          <div v-else class="fit column flex-center q-gutter-y-lg">
+            <q-img src="~/assets/add.svg" width="150px" />
+            <q-btn
+              icon="add"
+              color="primary"
+              :label="$t('Add new')"
+              @click="onAddNewRow"
+            />
+          </div>
         </div>
       </template>
     </q-splitter>
