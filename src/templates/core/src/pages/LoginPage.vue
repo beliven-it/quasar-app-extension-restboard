@@ -46,6 +46,8 @@
         class="q-mb-sm"
         color="primary"
         :label="$t('Sign in')"
+        :disable="!username || !password"
+        :loading="loading"
         @click="onLoginClicked"
       />
     </q-card-actions>
@@ -67,6 +69,7 @@ export default defineComponent({
       password: null,
       showPwd: false,
       keepLogged: false,
+      loading: false,
     };
   },
 
@@ -77,9 +80,13 @@ export default defineComponent({
         password: this.password,
         keepLogged: this.keepLogged,
       };
-      this.$auth.login(credentials).then(() => {
-        this.$router.push("/");
-      });
+      this.loading = true;
+      this.$auth
+        .login(credentials)
+        .then(() => {
+          this.$router.push("/");
+        })
+        .finally(() => (this.loading = false));
     },
 
     onForgotPassword() {
