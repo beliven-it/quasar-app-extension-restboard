@@ -8,7 +8,12 @@
     </q-card-section>
 
     <q-card-section class="column q-gutter-md">
+      <q-banner v-if="sent" inline-actions class="text-white bg-positive">
+        <template v-slot:avatar><q-icon name="check" /></template>
+        {{ $t("Request sent") }}
+      </q-banner>
       <q-input
+        v-else
         filled
         required
         v-model="username"
@@ -25,8 +30,11 @@
         @click="onCancel"
       />
       <q-btn
+        v-if="!sent"
         color="primary"
         :label="$t('Recover')"
+        :disable="!username"
+        :loading="loading"
         @click="onRecoverPasswordRequest"
       />
     </q-card-actions>
@@ -45,6 +53,8 @@ export default defineComponent({
   data() {
     return {
       username: null,
+      loading: false,
+      sent: false,
     };
   },
 
@@ -54,7 +64,11 @@ export default defineComponent({
     },
 
     onRecoverPasswordRequest() {
-      // TODO: add implementation here...
+      this.loading = true;
+      this.$auth
+        .recoverCredentials({ username: this.username })
+        .then(() => (this.sent = true))
+        .finally(() => (this.loading = false));
     },
   },
 });
