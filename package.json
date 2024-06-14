@@ -24,13 +24,13 @@
   },
   "devDependencies": {
     "commander": "^11.1.0",
-    "quasar-app-extension-rb-ui": "^0.47.3",
+    "quasar-app-extension-rb-ui": "^0.48.0",
     "vuelentino": "^0.0.4"
   },
   "dependencies": {
     "rb-auth-provider-simple": "^0.22.0",
     "rb-core-module": "^0.32.0",
-    "rb-data-provider-json-server": "^0.31.0"
+    "rb-data-provider-json-server": "^0.32.0"
   },
   "bin": "./cli/index.js"
 }
