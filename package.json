@@ -30,7 +30,7 @@
   "dependencies": {
     "rb-auth-provider-simple": "^0.22.0",
     "rb-core-module": "^0.32.0",
-    "rb-data-provider-json-server": "^0.32.0"
+    "rb-data-provider-json-server": "^0.33.0"
   },
   "bin": "./cli/index.js"
 }
