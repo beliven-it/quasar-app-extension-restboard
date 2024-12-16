@@ -10,8 +10,8 @@ const fs = require("fs");
 function installCoreModule(api) {
   api.render("./templates/core");
 
-  restboardPackageJsonFilename = path.join(__dirname, "../package.json");
-  restboardPackageJson = JSON.parse(
+  const restboardPackageJsonFilename = path.join(__dirname, "../package.json");
+  const restboardPackageJson = JSON.parse(
     fs.readFileSync(restboardPackageJsonFilename)
   );
 

@@ -7,18 +7,20 @@
  */
 
 module.exports = function (api) {
-  api.compatibleWith('quasar', '^2.0.0')
+  api.compatibleWith("quasar", "^2.0.0");
 
   if (api.hasVite) {
-    api.compatibleWith('@quasar/app-vite', '^1.0.0')
+    api.compatibleWith("@quasar/app-vite", "^1.0.0||^2.0.0");
   } else {
-    api.compatibleWith('@quasar/app-webpack', '^3.0.0')
+    api.compatibleWith("@quasar/app-webpack", "^3.0.0||^4.0.0");
   }
 
-  api.extendQuasarConf(conf => {
-    conf.boot.push('rb')
-  
+  api.extendQuasarConf((conf) => {
+    conf.boot.push("rb");
+
     // make sure boot & component files get transpiled (only for Webpack)
-    conf.build?.transpileDependencies?.push(/quasar-app-extension-restboard[\\/]src/)
-  })
-}
+    conf.build?.transpileDependencies?.push(
+      /quasar-app-extension-restboard[\\/]src/
+    );
+  });
+};
