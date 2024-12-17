@@ -1,5 +1,5 @@
 <template>
-  <q-card class="q-pa-sm shadow-1">
+  <q-card class="q-pa-sm shadow-1" tag="form" @submit.prevent>
     <q-card-section class="column items-center q-gutter-md">
       <q-avatar size="128px">
         <img src="~assets/logo.svg" />
@@ -43,6 +43,7 @@
 
     <q-card-actions vertical class="q-pa-md">
       <q-btn
+        type="submit"
         class="q-mb-sm"
         color="primary"
         :label="$t('Sign in')"
