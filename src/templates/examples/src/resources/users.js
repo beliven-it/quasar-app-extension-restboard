@@ -1,4 +1,4 @@
-import { createResource } from "rb-core-module";
+import { createResource } from "@beliven/rb-core-module";
 import { defineAsyncComponent } from "vue";
 import { dataProvider } from "../providers";
 

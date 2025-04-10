@@ -20,8 +20,8 @@ function installCoreModule(api) {
     devDependencies: restboardPackageJson.devDependencies,
     bin: {
       restboard:
-        "./node_modules/quasar-app-extension-restboard/src/cli/index.js",
-      rb: "./node_modules/quasar-app-extension-restboard/src/cli/index.js",
+        "./node_modules/@beliven/quasar-app-extension-restboard/src/cli/index.js",
+      rb: "./node_modules/@beliven/quasar-app-extension-restboard/src/cli/index.js",
     },
   };
 
@@ -36,7 +36,7 @@ function installCoreModule(api) {
   }
 
   api.extendJsonFile("quasar.extensions.json", {
-    "rb-ui": {},
+    "@beliven/rb-ui": {},
   });
 }
 

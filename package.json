@@ -1,5 +1,5 @@
 {
-  "name": "quasar-app-extension-restboard",
+  "name": "@beliven/quasar-app-extension-restboard",
   "version": "0.54.0",
   "description": "A starter kit to install Restboard in a fresh new Quasar project",
   "author": "Emanuele Bertoldi <emanuele.bertoldi@gmail.com>",
@@ -13,10 +13,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/restboard/quasar-app-extension-restboard"
+    "url": "https://github.com/beliven-it/quasar-app-extension-restboard"
   },
-  "bugs": "https://github.com/restboard/quasar-app-extension-restboard/issues",
-  "homepage": "https://github.com/restboard/quasar-app-extension-restboard",
+  "bugs": "https://github.com/beliven-it/quasar-app-extension-restboard/issues",
+  "homepage": "https://github.com/beliven-it/quasar-app-extension-restboard",
   "engines": {
     "node": ">= 8.9.0",
     "npm": ">= 5.6.0",
@@ -24,13 +24,16 @@
   },
   "devDependencies": {
     "commander": "^11.1.0",
-    "quasar-app-extension-rb-ui": "^0.49.0",
+    "@beliven/quasar-app-extension-rb-ui": "^0.49.0",
     "vuelentino": "^0.0.4"
   },
   "dependencies": {
-    "rb-auth-provider-simple": "^0.22.0",
-    "rb-core-module": "^0.32.0",
-    "rb-data-provider-json-server": "^0.33.0"
+    "@beliven/rb-auth-provider-simple": "^0.23.0",
+    "@beliven/rb-core-module": "^0.32.0",
+    "@beliven/rb-data-provider-json-server": "^0.33.0"
   },
-  "bin": "./cli/index.js"
+  "bin": "./cli/index.js",
+  "publishConfig": {
+    "access": "public"
+  }
 }
